@@ -32,7 +32,7 @@ box.plot=function(input,data,y.name=NULL,clr="rainbow")
   #if (class(input)=="formula") #TODO: delete if below code works
   if( inherits(input,"formula") )
   {
-    form.vars=formula.tools::get.vars(input)
+    form.vars=get.vars(input)
     y.clm=form.vars$y.var
     y=data[,y.clm]
 
@@ -219,7 +219,7 @@ event.plot=function(input,data,y.name=NULL,clr=NULL)
   #if (class(input)=="formula") #TODO: delete if below code works
   if( inherits(input,"formula") )
   {
-    form.vars=formula.tools::get.vars(input)
+    form.vars=get.vars(input)
     y.clm=form.vars$y.var
     y=data[,y.clm]
 
@@ -337,7 +337,7 @@ scatter.plot=function(form,data,
 
 {
   data=data.frame(data)
-  form.vars=formula.tools::get.vars(form)
+  form.vars=get.vars(form)
   y.clm=form.vars$y.var
   x.clm=form.vars$x.var
   y=data[,y.clm]
@@ -407,7 +407,7 @@ mosaic.plot=function(form,data,clr="rainbow",
 
 {
   data=data.frame(data)
-  form.vars=formula.tools::get.vars(form)
+  form.vars=get.vars(form)
   cty.clm=form.vars$y.var
   grp.clm=form.vars$x.var[1]
 

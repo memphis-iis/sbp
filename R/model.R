@@ -4,7 +4,7 @@ model=function(form,data,
 
 {
   data=data.frame(data)
-  form.vars=formula.tools::get.vars(form)
+  form.vars=get.vars(form)
   y.clm=form.vars$y.var
   y=data[,y.clm]
 
@@ -65,7 +65,7 @@ model.events=function(form,data,
                       clr="rainbow")
 
 {
-  form.vars=formula.tools::get.vars(form)
+  form.vars=get.vars(form)
   y.clm=form.vars$y.var
   y=data[,y.clm]
 
@@ -280,7 +280,7 @@ model.numeric=function(form,data,
                        clr=c("black","red"))
 
 {
-  form.vars=formula.tools::get.vars(form)
+  form.vars=get.vars(form)
   x.clm=form.vars$x.var
   y.clm=form.vars$y.var
 

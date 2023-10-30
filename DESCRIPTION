@@ -13,7 +13,6 @@ Imports:
     coin,
     data.table,
     DescTools,
-    formula.tools,
     graphics,
     grDevices,
     knitr,
