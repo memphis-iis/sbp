@@ -94,7 +94,7 @@ compare.events=function(form,
 
   if (any(y.cls=="Surv"))
   {
-    sfit=survfit(form,data=data)
+    sfit=survival::survfit(form,data=data)
     log.rank=survdiff(form,data)
     df=length(log.rank$n)-1
     p.value=pchisq(log.rank$chisq,df,lower.tail=F)
@@ -135,9 +135,9 @@ compare.events=function(form,
     grp=data[,grp.clm]
     ev.key=attr(y,"ev.key")
     evnt=ev.key[as.character(y[,2])]
-    ci.res=cuminc(y[,1],evnt,grp,cencode=ev.key[as.character(0)])
+    ci.res=cmprsk::cuminc(y[,1],evnt,grp,cencode=ev.key[as.character(0)])
 
-    res.tbl=timepoints(ci.res,times=pretty(c(0,max(y[,1]))))$est
+    res.tbl=cmprsk::timepoints(ci.res,times=pretty(c(0,max(y[,1]))))$est
     res.tbl=t(res.tbl)
 
     res.tbl2=ci.res$Tests
@@ -567,7 +567,8 @@ compare.proportions=function(form,
 cx.test=function(cx.tbl,B=9999)
 {
   res=try(fisher.test(cx.tbl),silent=T)
-  if (class(res)=="try-error")
+  # if (class(res)=="try-error") #TODO: delete if below code works
+  if( inherits( "res", "try-error"))
     res=chisq.test(cx.tbl,simulate.p.value=T,B=B)
 
   res$method=gsub("\n\t","",res$method)
@@ -582,13 +583,6 @@ cx.test=function(cx.tbl,B=9999)
 ######################################
 # get variables from a formula
 
-#'
-#' @param form The formula which defines the relationship of the variables
-#'
-#' @return returns the x and y variables from the formula
-#' @export
-#'
-#' @examples
 get.vars=function(form)
 
 {
@@ -596,7 +590,8 @@ get.vars=function(form)
   if(is.character(form))
   {
     form.str=try(as.formula(form),silent=T)
-    if (class(form.str)=="try-error")
+    # if (class(form.str)=="try-error") #TODO: delete if below code works
+    if( inherits( "form.str", "try-error"))
     {
       y.var=form
       res=list(y.var=y.var,
@@ -605,7 +600,9 @@ get.vars=function(form)
     }
   }
 
-  if (class(form)=="formula") form.str=deparse(form)
+  # if (class(form)=="formula") #TODO: delete if below code works
+  if( inherits( "form", "formula"))
+    form.str=deparse(form)
 
 
   tilde.split=unlist(strsplit(form.str,split=" ~ ",fixed=T))
@@ -628,13 +625,6 @@ get.vars=function(form)
 ###################################
 # get y-variable from a formula
 
-#'
-#' @param form The formula which defines the relationship of the variables
-#'
-#' @return returns the y variable of the formula
-#' @export
-#'
-#' @examples
 get.yvar=function(form)
 
 {

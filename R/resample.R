@@ -2,11 +2,12 @@ resample=function(input,data.set,
                   r=NULL,b=10000,
                   fig=2,txt=0,tbl=0,
                   clr=c("royalblue","red"))
-  
+
 {
-  
+
   clm.name=try(input,silent=T)
-  if (class(clm.name)=="try-error")
+  # if (class(clm.name)=="try-error") #TODO: delete if below code works
+  if( inherits( "clm.name", "try-error"))
   {
     temp=deparse(match.call())
     clm.name=get.arg(temp,"input")
@@ -14,7 +15,7 @@ resample=function(input,data.set,
 
   data.set=data.frame(data.set)
   if (is.null(r)) r=nrow(data.set)
-  
+
   y=get.y.clm(clm.name,data.set)
   y.name=attr(y,"clm.name")
 
@@ -24,7 +25,7 @@ resample=function(input,data.set,
   tbls=vector("list",b)
 
   clrs=define.colors(2,clr)
-  
+
   for (i in 1:b)
   {
     temp.data=data.set[indx[,i],]
@@ -39,11 +40,11 @@ resample=function(input,data.set,
       stat.values=desc.result$tbl[stat.names]
       rs.tbls=matrix(NA,b,length(stat.names))
       colnames(rs.tbls)=stat.names
-      for (i in 1:b) 
+      for (i in 1:b)
         rs.tbls[i,stat.names]=unlist(tbls[[i]])[stat.names]
-      
 
-      
+
+
       if (fig>0)
       {
         par(mar=rep(4,4))
@@ -63,7 +64,7 @@ resample=function(input,data.set,
         lines(x.nml,y.nml,col=clrs[2],lwd=2)
       }
     }
-    
+
     if (class(y)%in%c("character","factor","ordered"))
     {
       desc.tbl=desc.result$tbl
@@ -71,7 +72,7 @@ resample=function(input,data.set,
       ok.rows=!is.element(rw.names,c("",NA,"NA"))
       rw.names=rw.names[ok.rows]
       desc.tbl=desc.tbl[ok.rows,]
-      
+
       rownames(desc.tbl)=rw.names
       stat.names=desc.tbl[,1]
       rs.tbls=matrix(NA,b,length(stat.names))
@@ -83,7 +84,7 @@ resample=function(input,data.set,
         clm.names=intersect(names(temp.stat),stat.names)
         rs.tbls[i,clm.names]=temp.stat[clm.names]
       }
-      
+
       if (fig>0)
       {
         for (i in 1:ncol(rs.tbls))
@@ -98,7 +99,7 @@ resample=function(input,data.set,
 
           y=dbinom(x,r,desc.tbl[stat.names[i],"percent"]/100)/(100/r)
 
-          
+
           par(mar=rep(4,4))
           hst=hist(rs.tbls[,stat.names[i]],freq=F,
                    breaks=100*brks/r,
@@ -108,29 +109,29 @@ resample=function(input,data.set,
                    main=paste0("% ",stat.names[i]," in ",
                                "cohorts of ",r," subjects"),
                    cex.axis=1,cex.lab=1.25,las=1,
-                   col=clrs[1],ylim=c(0,max(y,hst$density))) 
+                   col=clrs[1],ylim=c(0,max(y,hst$density)))
 
           segments(100*(x-0.5)/r,y,
                    100*(x+0.5)/r,y,col=clrs[2],
                    lwd=3)
           }
-          
+
         }
 
-        
+
       }
 
   res.txt=NULL
   res.tbl=NULL
   res.method=NULL
   res.ref=NULL
-  
+
   if (tbl>0) res.tbl=rs.tbls
   res=list(txt=res.txt,
            tbl=res.tbl,
            method=res.method,
            ref=res.ref)
-  
+
   class(res)="SBP.result"
   return(res)
 }

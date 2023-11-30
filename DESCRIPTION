@@ -10,18 +10,13 @@ Roxygen: list(markdown = TRUE)
 RoxygenNote: 7.2.3
 Imports: 
     cmprsk,
-    coin,
     data.table,
     DescTools,
     graphics,
     grDevices,
     knitr,
     lawstat,
-    MatrixModels,
-    penalized,
     readxl,
-    Rfit,
-    riskRegression,
     robustbase,
     stats,
     survival,
