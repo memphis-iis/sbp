@@ -16,6 +16,7 @@ Imports:
     grDevices,
     knitr,
     lawstat,
+    methods,
     readxl,
     robustbase,
     stats,

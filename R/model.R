@@ -46,7 +46,7 @@ model=function(form,data,
   }
 
   # if (class(y)%in%c("factor","character")) #TODO: delete if below code works
-  if( inherits(y,"factor") || inherits(y,"character") )
+  if( is(y,"factor") || is(y,"character") )
   {
     uniq.y=unique(y)
     uniq.y=setdiff(y,c(NA,NaN))
@@ -65,7 +65,7 @@ model=function(form,data,
   }
 
   #if (class(y)%in%c("logical")) #TODO: delete if below code works
-  if( inherits(y,"logical") )
+  if( is(y,"logical") )
   {
     res=model.binary(form,data,tbl,fig,txt,clr)
     return(res)
@@ -532,7 +532,7 @@ model.txt=function(model.result)
     zph.res=try(survival::cox.zph(model.result,terms=F),silent=T)
     #if (class(zph.res)!="try-error")
     #TODO: delete if below code works
-    if( !inherits(zph.res,"try-error") )
+    if( !is(zph.res,"try-error") )
     {
       p.PHA=zph.res$table[,"p"]
       global.PHA=zph.res$table["GLOBAL","p"]

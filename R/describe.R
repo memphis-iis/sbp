@@ -36,7 +36,7 @@ describe=function(clm.name,    # name of column in quotation marks
 {
   try.clm=try(clm.name,silent=T)
   #if (class(try.clm)=="try-error") #TODO: delete if below code works
-  if( inherits(try.clm,"try-error"))
+  if( is(try.clm,"try-error"))
   {
     temp=deparse(match.call())
     clm.name=get.arg(temp,"clm.name")

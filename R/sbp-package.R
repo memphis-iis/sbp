@@ -12,6 +12,7 @@
 #' @importFrom graphics segments
 #' @importFrom grDevices boxplot.stats
 #' @importFrom knitr kable
+#' @importFrom methods is
 #' @importFrom readxl excel_sheets
 #' @importFrom readxl read_xlsx
 #' @importFrom robustbase ltsReg

@@ -47,7 +47,7 @@ box.plot=function(input,data,y.name=NULL,clr="rainbow")
   }
 
   #if (class(input)=="formula") #TODO: delete if below code works
-  if( inherits(input,"formula") )
+  if( is(input,"formula") )
   {
     form.vars=get.vars(input)
     y.clm=form.vars$y.var
@@ -154,7 +154,7 @@ bar.plot=function(y.clm,data,all=F,y.name=NULL,clr=NULL)
 
 
   #if (class(x)[1]%in%c("ordered","factor","character")) #TODO: delete if below code works
-  if( inherits(x,"ordered") || inherits(x,"factor") || inherits(x,"character"))
+  if( is(x,"ordered") || is(x,"factor") || is(x,"character"))
   {
     avl.tbl=table(x)
     all.tbl=table(x,exclude=NULL)
@@ -180,7 +180,7 @@ bar.plot=function(y.clm,data,all=F,y.name=NULL,clr=NULL)
   }
 
   #if (class(x)[1]%in%c("numeric","integer","double"))#TODO: delete if below code works
-  if( inherits(x,"numeric") || inherits(x,"double") || inherits(x,"integer"))
+  if( is(x,"numeric") || is(x,"double") || is(x,"integer"))
   {
     if (is.null(clr)) clr="gray"
     clrs=define.colors(1,clr)
@@ -253,7 +253,7 @@ event.plot=function(input,data,y.name=NULL,clr=NULL)
   if (is.null(y.name)) y.name=input
 
   #if (class(input)=="character") #TODO: delete if below code works
-  if( inherits(input,"character") )
+  if( is(input,"character") )
   {
     x=data[,input]
     cls=class(x)
@@ -295,20 +295,20 @@ event.plot=function(input,data,y.name=NULL,clr=NULL)
   }
 
   #if (class(input)=="formula") #TODO: delete if below code works
-  if( inherits(input,"formula") )
+  if( is(input,"formula") )
   {
     form.vars=get.vars(input)
     y.clm=form.vars$y.var
     y=data[,y.clm]
 
     #if (class(y)=="Surv") #TODO: delete if below code works
-    if( inherits(y,"Surv") )
+    if( is(y,"Surv") )
     {
       grp.clm=form.vars$x.var
       grp=data[,grp.clm]
 
       #if (class(grp)[1]%in%c("numeric","integer")) #TODO: delete if below code works
-      if( inherits(grp,"numeric") || inherits(grp,"integer"))
+      if( is(grp,"numeric") || is(grp,"integer"))
       {
         grp=stats::quantile(grp,3)
         Rcode=paste0('data[,"',grp.clm,'"]=grp')
@@ -337,13 +337,13 @@ event.plot=function(input,data,y.name=NULL,clr=NULL)
     }
 
     #if (class(y)=="competing.events") #TODO: delete if below code works
-    if( inherits(y,"competing.events") )
+    if( is(y,"competing.events") )
     {
       grp.clm=form.vars$x.var
       grp=data[,grp.clm]
 
       #if (class(grp)[1]%in%c("numeric","integer")) #TODO: delete if below code works
-      if( inherits(grp,"numeric") || inherits(grp,"integer"))
+      if( is(grp,"numeric") || is(grp,"integer"))
       {
         grp=stats::quantile(grp,3)
       }
@@ -586,7 +586,6 @@ mosaic.plot=function(form,data,clr="rainbow",
 #' cut.quantile(data_frame$len)
 #'
 cut.quantile=function(x,n=4)
-
 {
   qntl=stats::quantile(x,(1:(n-1))/n,na.rm=T)
   qntl=c(-Inf,qntl,Inf)

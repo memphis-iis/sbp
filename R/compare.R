@@ -599,7 +599,7 @@ cx.test=function(cx.tbl,B=9999)
 {
   res=try(fisher.test(cx.tbl),silent=T)
   # if (class(res)=="try-error") #TODO: delete if below code works
-  if( inherits( "res", "try-error"))
+  if( is( res, "try-error"))
     res=chisq.test(cx.tbl,simulate.p.value=T,B=B)
 
   res$method=gsub("\n\t","",res$method)
@@ -631,7 +631,7 @@ get.vars=function(form)
   {
     form.str=try(as.formula(form),silent=T)
     # if (class(form.str)=="try-error") #TODO: delete if below code works
-    if( inherits( "form.str", "try-error"))
+    if( is( form.str, "try-error"))
     {
       y.var=form
       res=list(y.var=y.var,
@@ -640,8 +640,8 @@ get.vars=function(form)
     }
   }
 
-  if (class(form)=="formula") #TODO: delete if below code works
-  # if( inherits( "form", "formula"))
+  # if (class(form)=="formula") #TODO: delete if below code works
+  if( is( form, "formula"))
     form.str=deparse(form)
 
 

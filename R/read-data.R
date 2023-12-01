@@ -71,7 +71,7 @@ read.data=function(file.name=NULL)
                              title="Choose the excel sheet to read",
                              graphics=T))
     # if (class(sheet.choice)=="try-error") #TODO: delete if below code works
-    if( inherits( "sheet.choice", "try-error"))
+    if( is( sheet.choice, "try-error"))
     {
       sheet.choice=select.list(file.sheets,
                                title="Choose the excel sheet to read.",
@@ -81,7 +81,7 @@ read.data=function(file.name=NULL)
     dset=as.data.frame(dset)
     try(View(dset))
     # if (class(dset)=="data.frame") #TODO: delete if below code works
-    if( inherits( "dset", "data.frame"))
+    if( is( dset, "data.frame"))
     {
       alert("Successfully read sheet 1 of ",basename(file.name),".")
       alert("Next time you may use the following R code:")

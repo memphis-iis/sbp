@@ -30,7 +30,7 @@ associate <- function(forms, data,
   ### get the variables from formula
 
   #if(class(data) != "data.frame"){ #TODO: delete if below code works
-  if(!inherits(data,"data.frame")) {
+  if(is(data,"data.frame")){
     data <- data.frame(data)
   }
 

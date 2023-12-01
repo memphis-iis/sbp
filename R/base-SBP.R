@@ -118,7 +118,7 @@ arg.as.char=function(x)
 {
   temp=try(x,silent=T)
   #if (class(temp)=="character") #TODO: delete if below code works
-  if( inherits(temp,"character"))
+  if( is(temp,"character"))
     return(temp)
 
   temp=deparse(match.call())

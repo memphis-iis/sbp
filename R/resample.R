@@ -27,7 +27,7 @@ resample=function(input,data.set,
 
   clm.name=try(input,silent=T)
   # if (class(clm.name)=="try-error") #TODO: delete if below code works
-  if( inherits( "clm.name", "try-error"))
+  if( is( clm.name, "try-error"))
   {
     temp=deparse(match.call())
     clm.name=get.arg(temp,"input")
