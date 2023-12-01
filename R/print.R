@@ -1,3 +1,19 @@
+#'
+#' Print a function's result in a narrative
+#'
+#' @param sbp.result The variable that stores the calculation results.
+#' @param knt A flag that identifies if knitr is available. Default value is set to TRUE. #ask_Stan
+#' @param tbl A flag to show tables in the result. Default value is set to TRUE.
+#' @param txt A flag to show texts in the result. Default value is set to TRUE.
+#' @param method #ask_Stan
+#' @param ref A flag to show references in the result. Default value is set to TRUE.
+#'
+#' @return shows a functions results containing tables, results, methods and references.
+#' @export
+#'
+#' @examples
+#' #ask_Stan
+#'
 print.SBP.result=function(sbp.result,knt=T,tbl=T,txt=T,method=T,ref=T)
 
 {
@@ -49,6 +65,16 @@ print.SBP.result=function(sbp.result,knt=T,tbl=T,txt=T,method=T,ref=T)
 
 }
 
+#' Paste the table results in a word file
+#'
+#' @param SBP.result the format of the result.
+#'
+#' @return outputs the result tables in a word file.
+#' @export
+#'
+#' @examples
+#' #ask_Stan
+#'
 word.table=function(SBP.result)
 
 {
@@ -78,6 +104,17 @@ word.table=function(SBP.result)
 
 }
 
+#' Print SBP results in power point slides
+#'
+#' @param SBP.code.string #ask_Stan
+#' @param slide.title #ask_Stan
+#'
+#' @return writes the SBP results in power point slides
+#' @export
+#'
+#' @examples #ask_Stan
+#'
+#'
 SBP.example.Rmd.slides=function(SBP.code.string,slide.title)
 
 {

@@ -2,6 +2,16 @@
 # get a data set
 
 
+#' Get Data Set from the R global environment
+#'
+#' @param data.set the name of the data set
+#'
+#' @return returns the data set as a data frame from the R global environment
+#' @export
+#'
+#' @examples
+#'#error_in_code
+#'
 get.data.set=function(data.set)
 {
   temp=deparse(match.call())
@@ -35,6 +45,20 @@ get.data.set=function(data.set)
 ###########################################
 # Extract a column of data from a data set
 
+#' Get Column Data
+#'
+#' @param y the exact column name or close match to its name
+#' @param dset the data set from which the column data will be extracted
+#'
+#' @return returns the 'y' column data from the data set
+#' @export
+#'
+#' @examples
+#' data_frame <- data.frame(len = c(11.2, 8.2, 10.0, 27.3, 14.5, 26.4, 4.2, 15.2, 14.7, 10.4),
+#'                          supp = c("VC","OJ","VC","VC","VC","OJ","VC","OJ","VC","OJ"),
+#'                          dose = c(0.5, 0.5, 0.5, 2.0, 1.5, 1.0, 1.0, 2.0, 0.5, 2.0))
+#' get.y.clm("Supp",data_frame)
+#'
 get.y.clm=function(y,dset)
 
 {
@@ -80,6 +104,16 @@ get.y.clm=function(y,dset)
 #################################
 # Represent input argument as a character
 
+#' Represent input argument as a character
+#'
+#' @param x the input argument
+#'
+#' @return returns the input argument as character string
+#' @export
+#'
+#' @examples
+#' arg.as.char(binarydata)
+#'
 arg.as.char=function(x)
 {
   temp=try(x,silent=T)
@@ -96,6 +130,17 @@ arg.as.char=function(x)
 # get the argument value
 
 
+#' Get Argument Value
+#'
+#' @param call.string the string that is called and converted into string
+#' @param arg.string the string to match with
+#'
+#' @return #ask_Stan
+#' @export
+#'
+#' @examples
+#' #ask_Stan
+#'
 get.arg=function(call.string, # obtain with deparse(match.call())
                  arg.string)  # character string with argument name
 {
@@ -128,6 +173,19 @@ get.arg=function(call.string, # obtain with deparse(match.call())
 # perform shapiro.test if n < 3000
 # otherwise perform stats::ks.test
 
+#' Perform a Normality Test
+#'
+#' @param x the feature in the data set whose distribution will be tested.
+#'
+#' @return returns the p-value of the feature that implies the distribution of the data.
+#' @export
+#'
+#' @examples
+#' data_frame <- data.frame(len = c(11.2, 8.2, 10.0, 27.3, 14.5, 26.4, 4.2, 15.2, 14.7, 10.4),
+#'                          supp = c("VC","OJ","VC","VC","VC","OJ","VC","OJ","VC","OJ"),
+#'                          dose = c(0.5, 0.5, 0.5, 2.0, 1.5, 1.0, 1.0, 2.0, 0.5, 2.0))
+#' normality.test(data_frame$len)
+#'
 normality.test=function(x)
 {
   na=is.na(x)
@@ -148,6 +206,14 @@ normality.test=function(x)
 # fresh start
 # clean out R memory and start over
 
+#' Fresh R Session
+#'
+#' @return clears the R environment and starts new session with the source files and packages.
+#' @export
+#'
+#' @examples
+#' fresh.start()
+#'
 fresh.start=function()
 {
   rm(list=ls())

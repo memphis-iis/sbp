@@ -4,7 +4,7 @@
 
 
 #######################################
-# Estimate
+#'
 #' Estimate population value
 #'
 #' This function estimates the population value of a column in a data frame.
@@ -26,7 +26,8 @@
 #' data_frame <- data.frame(time = c(1,2,3,4,5,6,7,8,9,10),
 #'                          y = c(11,12,13,14,15,16,17,18,19,20),
 #'                          status = c("A","B","A","A","B","A","A","B","A","A"))
-#' estimate(clm.name = "y", data = data_frame)
+#' estimate("y", data_frame)
+#'
 estimate=function(clm.name,
                   data,
                   null=NULL,
@@ -47,7 +48,6 @@ estimate=function(clm.name,
 
 
 ###################################################
-# Estimate population values
 #' Estimate population values
 #'
 #' This function estimates the population value of a categorical variable in a
@@ -70,8 +70,8 @@ estimate=function(clm.name,
 #' data_frame <- data.frame(time = c(1,2,3,4,5,6,7,8,9,10),
 #'                          y = c(11,12,13,14,15,16,17,18,19,20),
 #'                          status = c("A","B","A","A","B","A","A","B","A","A"))
-#' estimate.pop.value(x = data_frame$status, null = 0, tbl = 1, fig = 1,
-#' txt = 1, clr = "red", x.name = "variable_name")
+#' estimate.pop.value(x = data_frame$status)
+#'
 estimate.pop.value=function(x,           # categorical variable to describe
                             null=NULL,   # hypothesized null value
                             tbl=1,       # tabular output (0=none; 1=basic; 2=detailed)
@@ -183,6 +183,7 @@ estimate.events=function(x,           # categorical variable to describe
 #'                          status = c("A","B","A","A","B","A","A","B","A","A"))
 #' estimate.proportion(x = data_frame$status, tbl = 1, fig = 1, txt = 1,
 #' clr = "red", x.name = "variable_name")
+#'
 estimate.proportion=function(x,           # categorical variable to describe
                              tbl=1,       # tabular output (0=none; 1=basic; 2=detailed)
                              fig=1,       # figure output (0=none; 1=basic; 2 and higher = more)
@@ -260,6 +261,7 @@ estimate.proportion=function(x,           # categorical variable to describe
 #'                          status = c("A","B","A","A","B","A","A","B","A","A"))
 #' estimate.center(x = data_frame$y, null = 0, tbl = 1, fig = 1, txt = 1,
 #' clr = "red", x.name = "variable_name")
+#'
 estimate.center=function(x,          # numeric variable to describe
                          null=NULL,  # hypothesized null value
                          tbl=1,      # tabular output (0=none; 1=basic; 2=detailed)

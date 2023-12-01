@@ -1,21 +1,26 @@
 #####################################
-# Compare
+# Compare two variables
 
-#' The function which compares a variable with a categorical variable
+#' The function which compares two variables.
 #'
 #' @param form The formula which is used to define the relationship of the two variables.
-#' @param data The dataset from which the two variables are taken.
+#' @param data The data set from which the two variables are taken.
 #' @param txt A flag that indicates to display text. Default value is 1.
 #' @param tbl A flag that indicates to display the number of table(s). Default value is 1.
 #' @param fig A flag that indicates to display the number of figure(s). Default value is 1.
-#' @param y.name The 'y' variable in the formula. Default value is NULL.
-#' @param grp.name The 'group' variable in the formula. Default value is NULL.
-#' @param clr The color of the graphs in the plot(s).
+#' @param y.name The 'y' variable name in the formula. Default value is NULL. #ask_Stan
+#' @param grp.name The 'group' name of the variable in the formula. Default value is NULL. #ask_Stan
+#' @param clr The color(s) used in the plot(s).
 #'
-#' @return The text,plots and references describing the relationship between the variables.
+#' @return returns the relationship between the variables with a narrative,plots and references.
 #' @export
 #'
 #' @examples
+#' data_frame <- data.frame(len = c(11.2, 8.2, 10.0, 27.3, 14.5, 26.4, 4.2, 15.2, 14.7, 10.4),
+#'                          supp = c("VC","OJ","VC","VC","VC","OJ","VC","OJ","VC","OJ"),
+#'                          dose = c(0.5, 0.5, 0.5, 2.0, 1.5, 1.0, 1.0, 2.0, 0.5, 2.0))
+#' compare(supp~len, data_frame)
+#'
 compare=function(form,data,
                  txt=1,tbl=1,fig=1,
                  y.name=NULL,
@@ -57,22 +62,24 @@ compare=function(form,data,
 ##################################################
 #
 
-#' Compare Events
+#' Compare events between 2 variables if the 'y' variable is of survival class.
 #'
 #'
 #' @param form The formula which is used to define the relationship of the two variables.
-#' @param data The dataset from which the two variables are taken.
+#' @param data The data set from which the two variables are taken.
 #' @param txt A flag that indicates to display text. Default value is 1.
 #' @param tbl A flag that indicates to display the number of table(s). Default value is 1.
 #' @param fig A flag that indicates to display the number of figure(s). Default value is 1.
-#' @param name.y The 'y' variable in the formula. Default value is NULL.
-#' @param name.grp The 'group' variable in the formula. Default value is NULL.
-#' @param clr The color of the graphs in the plot(s).
+#' @param name.y The 'y' variable name in the formula. Default value is NULL. #ask_Stan
+#' @param name.grp The 'group' variable name in the formula. Default value is NULL. #ask_Stan
+#' @param clr The color(s) used in the plot(s).
 #'
-#' @return The text,plots and references describing the relationship between the variables.
+#' @return describes the relationship between the variables with a narrative,plots and references.
 #' @export
 #'
-#' @examples
+#' @examples #ask_Stan
+#'
+#'
 compare.events=function(form,
                         data,
                         txt=1,tbl=1,fig=1,
@@ -213,23 +220,27 @@ compare.events=function(form,
 }
 
 ##################################################
-# Compare centers of a numeric variable across groups
-
-#' Title
+#
+#' Compare centers of a numeric variable across groups
 #'
-#' @param form The formula which is used to define the relationship of the two variables.
-#' @param data The dataset from which the two variables are taken.
+#' @param form The formula which is used to define the relationship between the two variables.
+#' @param data The data set from which the two variables are taken.
 #' @param txt A flag that indicates to display text. Default value is 1.
 #' @param tbl A flag that indicates to display the number of table(s). Default value is 1.
 #' @param fig A flag that indicates to display the number of figure(s). Default value is 1.
-#' @param name.y The 'y' variable in the formula. Default value is NULL.
-#' @param name.grp The 'group' variable in the formula. Default value is NULL.
-#' @param clr The color of the graphs in the plot(s).
+#' @param name.y The 'y' variable name in the formula. Default value is NULL. #ask_Stan
+#' @param name.grp The 'group' variable name in the formula. Default value is NULL. #ask_Stan
+#' @param clr The color(s) used in the plot(s).
 #'
-#' @return The text,plots and references describing the relationship between the variables.
+#' @return describes the relationship between the variables with a  narrative,plots and references .
 #' @export
 #'
 #' @examples
+#' data_frame <- data.frame(len = c(11.2, 8.2, 10.0, 27.3, 14.5, 26.4, 4.2, 15.2, 14.7, 10.4),
+#'                          supp = c("VC","OJ","VC","VC","VC","OJ","VC","OJ","VC","OJ"),
+#'                          dose = c(0.5, 0.5, 0.5, 2.0, 1.5, 1.0, 1.0, 2.0, 0.5, 2.0))
+#' compare(len~supp,data_frame)
+#'
 compare.centers=function(form,
                          data,
                          txt=1,tbl=1,fig=1,
@@ -440,21 +451,27 @@ compare.centers=function(form,
 ########################################
 #
 
-#' Compare Proportions
+#' Compare Proportions between variables when the 'y' variable is of factor class.
 #'
-#' @param form The formula which is used to define the relationship of the two variables.
-#' @param data The dataset from which the two variables are taken.
+#' @param form The formula which is used to define the relationship between the two variables.
+#' @param data The data set from which the two variables are taken.
 #' @param txt A flag that indicates to display text. Default value is 1.
 #' @param tbl A flag that indicates to display the number of table(s). Default value is 1.
 #' @param fig A flag that indicates to display the number of figure(s). Default value is 1.
-#' @param y.name The 'y' variable in the formula. Default value is NULL.
-#' @param grp.name The 'group' variable in the formula. Default value is NULL.
-#' @param clr The color of the graphs in the plot(s).
+#' @param y.name The 'y' variable name in the formula. Default value is NULL. #ask_Stan
+#' @param grp.name The 'group' variable name in the formula. Default value is NULL. #ask_Stan
+#' @param clr The color(s) used in the plot(s).
 #'
-#' @return The text,plots and references describing the relationship between the variables.
+#' @return describes the relationship between the variables with a narrative,plots and references.
+#'
 #' @export
 #'
 #' @examples
+#' data_frame <- data.frame(len = c(11.2, 8.2, 10.0, 27.3, 14.5, 26.4, 4.2, 15.2, 14.7, 10.4),
+#'                          supp = c("VC","OJ","VC","VC","VC","OJ","VC","OJ","VC","OJ"),
+#'                          dose = c(0.5, 0.5, 0.5, 2.0, 1.5, 1.0, 1.0, 2.0, 0.5, 2.0))
+#' compare(supp~len,data_frame)
+#'
 compare.proportions=function(form,
                              data,
                              tbl=1,fig=1,txt=1,
@@ -564,6 +581,20 @@ compare.proportions=function(form,
 #####################################
 # Test of independence on a cross-tabulation
 
+#' Test of independence on a cross-tabulation
+#'
+#' `cx.test()` tests the independence on a cross-tabulation result.
+#'
+#' @param cx.tbl #ask_Stan
+#' @param B #ask_Stan
+#'
+#' @return #ask_Stan
+#'
+#' @export
+#'
+#' @examples
+#' #ask_Stan
+#'
 cx.test=function(cx.tbl,B=9999)
 {
   res=try(fisher.test(cx.tbl),silent=T)
@@ -583,8 +614,17 @@ cx.test=function(cx.tbl,B=9999)
 ######################################
 # get variables from a formula
 
+#' Get the dependent(y) and independent(x) variables from a formula
+#'
+#' @param form The formula which defines the relationship of the variables.
+#'
+#' @return returns the x and y variables from the formula.
+#' @export
+#'
+#' @examples
+#' get.vars(points~team)
+#'
 get.vars=function(form)
-
 {
   x.vars=NULL
   if(is.character(form))
@@ -600,8 +640,8 @@ get.vars=function(form)
     }
   }
 
-  # if (class(form)=="formula") #TODO: delete if below code works
-  if( inherits( "form", "formula"))
+  if (class(form)=="formula") #TODO: delete if below code works
+  # if( inherits( "form", "formula"))
     form.str=deparse(form)
 
 
@@ -625,6 +665,16 @@ get.vars=function(form)
 ###################################
 # get y-variable from a formula
 
+#' Get y-variable from a formula
+#'
+#' @param form The formula which defines the relationship of the variables.
+#'
+#' @return returns the y variable of the formula.
+#' @export
+#'
+#' @examples
+#' get.yvar(height~age)
+#'
 get.yvar=function(form)
 
 {

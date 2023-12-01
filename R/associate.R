@@ -1,23 +1,32 @@
-#' Compare two variables based on their type
+
+#' Associate: Compare two variables based on their type
 #'
-#' @param forms The formula that takes the 2 numeric variables.
-#' @param data The data frame that contains the 2 variables.
+#' @param forms The formula that takes the 2 variables.
+#' @param data The data set name that contains the 2 variables.
 #' @param txt A flag that indicates to display text. Default value is 1.
 #' @param tbl A flag that indicates to display the number of table(s). Default value is 1.
 #' @param fig A flag that indicates to display the number of figure(s). Default value is 1.
-#' @param y.name The 'y' variable in the formula. Default value is NULL.
-#' @param x.name The 'x' variable in the formula. Default value is NULL.
-#' @param clr The color of the text. Default value is 'black'.
-#' @param line The number of lines in the result. Default value is 1.
+#' @param y.name The 'y' variable name in the formula. Default value is NULL. #ask_Stan
+#' @param x.name The 'x' variable name in the formula. Default value is NULL. #ask_Stan
+#' @param clr The color(s) in the plot(s). Default value is 'black'.
+#' @param line The number of lines in the result. Default value is 1. #ask_Stan
 #'
-#' @return returns the statistical relationship between the two variables with texts, plots and references.
+#' @return returns the statistical relationship between the two variables with a narrative, plots and references.
 #' @export
 #'
 #' @examples
-associate <- function(forms, data, txt= 1, tbl= 1, fig= 1, y.name= NULL, x.name= NULL, clr= NULL, line= 1) {
-
-
-
+#' data_frame <- data.frame(len = c(11.2, 8.2, 10.0, 27.3, 14.5, 26.4, 4.2, 15.2, 14.7, 10.4),
+#'                          supp = c("VC","OJ","VC","VC","VC","OJ","VC","OJ","VC","OJ"),
+#'                          dose = c(0.5, 0.5, 0.5, 2.0, 1.5, 1.0, 1.0, 2.0, 0.5, 2.0))
+#' associate(len~supp, data_frame)
+#' associate(len~dose, data_frame)
+#'
+associate <- function(forms, data,
+                      txt= 1, tbl= 1,
+                      fig= 1, y.name= NULL,
+                      x.name= NULL, clr= NULL,
+                      line= 1)
+{
   ### get the variables from formula
 
   #if(class(data) != "data.frame"){ #TODO: delete if below code works

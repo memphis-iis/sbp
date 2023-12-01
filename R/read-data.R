@@ -1,3 +1,13 @@
+#' Read data file of different extensions
+#'
+#' @param file.name the name of the file with extension.
+#'
+#' @return returns the data of the file as a data frame.
+#' @export
+#'
+#' @examples
+#' read.data("binary.csv")
+#'
 read.data=function(file.name=NULL)
 
 {
@@ -89,8 +99,17 @@ read.data=function(file.name=NULL)
 }
 
 ##################################
-# Extract a file extension
 
+#' Extract a file extension type
+#'
+#' @param file.name the name of the file with extension
+#'
+#' @return returns the extension name of the file
+#' @export
+#'
+#' @examples
+#' file.extension("binary.csv")
+#'
 file.extension=function(file.name)
 {
   split.name=unlist(strsplit(file.name,split=".",fixed=T))
@@ -101,6 +120,16 @@ file.extension=function(file.name)
 ####################################
 # Alert the user with a message
 
+#' User alert message
+#'
+#' @param ... the alert message as string in the function
+#'
+#' @return prints the alert message.
+#' @export
+#'
+#' @examples
+#' alert("Encountered a problem")
+#'
 alert=function(...)
 {
   alert.message=paste0(...)
@@ -110,6 +139,16 @@ alert=function(...)
 ####################################
 # Alert the user and stop the calculation
 
+#' Alert user and stop calculation
+#'
+#' @param ... the error message as string in the function
+#'
+#' @return print the alert message and stops execution of program.
+#' @export
+#'
+#' @examples
+#' stop.alert("found error: program will halt")
+#'
 stop.alert=function(...)
 {
   alert.message=paste0(...)

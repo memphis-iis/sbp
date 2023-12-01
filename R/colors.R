@@ -1,6 +1,17 @@
 #################################
 # Define colors
 
+#' Choose Colors
+#'
+#' @param n the number of colors to add
+#' @param clr.palette source color name. Default value is set to "rainbow"
+#'
+#' @return displays n number of colors from the color palette
+#' @export
+#'
+#' @examples
+#' define.colors(5, clr.palette="rainbow")
+#'
 define.colors=function(n,
                        clr.palette="rainbow")
 {
@@ -55,6 +66,16 @@ define.colors=function(n,
 ###################################
 # show color palettes
 
+#' Display Color Palette
+#'
+#' @param n.colors the number to color to show in each palette. The default value of n.colors is set to 8.
+#'
+#' @return displays the n.colors in each palette
+#' @export
+#'
+#' @examples
+#' show.palettes()
+#'
 show.palettes=function(n.colors=8)
 {
   plot(c(0,15),c(0,-25),type="n",axes=F,
@@ -86,6 +107,14 @@ show.palettes=function(n.colors=8)
 ######################################
 # show colors
 
+#' Display Available Colors
+#'
+#' @return shows the available colors in R
+#' @export
+#'
+#' @examples
+#' show.colors()
+#'
 show.colors=function()
 
 {
@@ -113,6 +142,16 @@ show.colors=function()
   }
 }
 
+#' Find if Color Exists
+#'
+#' @param x the name of the color
+#'
+#' @returns returns TRUE if the color exist, FALSE if it does not.
+#' @export
+#'
+#' @examples
+#' areColors("blue")
+#'
 areColors <- function(x)
 {
   sapply(x, function(X) {

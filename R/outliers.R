@@ -1,5 +1,23 @@
 #get.package("robustbase")
 
+#' Find Outliers in a numeric variable
+#'
+#' @param clm the numeric variable to check for Outliers.
+#' @param dset the data set name that has the column data.
+#' @param y.name the name of the column variable.
+#' @param fig A flag that indicates to display the number of figure(s). Default value is 1.
+#' @param txt A flag that indicates to display text. Default value is 1.
+#' @param clr The color of the text. Default value is 'black'.
+#'
+#' @return shows if any outliers exists in the numeric variable with texts,figure and references.
+#' @export
+#'
+#' @examples
+#' data_frame <- data.frame(len = c(11.2, 8.2, 10.0, 27.3, 14.5, 26.4, 4.2, 15.2, 14.7, 10.4),
+#'                          supp = c("VC","OJ","VC","VC","VC","OJ","VC","OJ","VC","OJ"),
+#'                          dose = c(0.5, 0.5, 0.5, 2.0, 1.5, 1.0, 1.0, 2.0, 0.5, 2.0))
+#' outliers("len",data_frame)
+#'
 outliers=function(clm,dset,y.name=NULL,fig=1,txt=1,
                   clr=c("gray","red"))
 

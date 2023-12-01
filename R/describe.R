@@ -4,6 +4,26 @@
 # Compute descriptive stats, tables, figures, and narrative
 
 
+#' Describe a Variable/Feature
+#'
+#' @param clm.name the name of the column in quotation marks.
+#' @param data the name of the data set.
+#' @param tbl A flag that indicates to display the number of table(s). Default value is 1.
+#' @param fig A flag that indicates to display the number of figure(s). Default value is 1.
+#' @param txt A flag that indicates to display text. Default value is 1.
+#' @param clr The color in the plot(s). Default value is NULL.
+#' @param y.name name of x in quotation marks for narrative. #ask_Stan
+#' @param use.all indicates whether to include all data regardless of missingness. Default value is True. #ask_Stan
+#'
+#' @return returns statistical description of the variable in terms of tables, figures and narratives.
+#' @export
+#'
+#' @examples
+#' data_frame <- data.frame(len = c(11.2, 8.2, 10.0, 27.3, 14.5, 26.4, 4.2, 15.2, 14.7, 10.4),
+#'                          supp = c("VC","OJ","VC","VC","VC","OJ","VC","OJ","VC","OJ"),
+#'                          dose = c(0.5, 0.5, 0.5, 2.0, 1.5, 1.0, 1.0, 2.0, 0.5, 2.0))
+#' describe("len",data_frame)
+#'
 describe=function(clm.name,    # name of column in quotation marks
                   data,        # data set as a data.frame
                   tbl=1,       # tabular output (0=none; 1=basic; 2=detailed)
@@ -66,13 +86,26 @@ describe=function(clm.name,    # name of column in quotation marks
 ###########################################
 # Describe event time distribution with tables, figures, and a narrative
 
+#' Describe Survival Variable
+#'
+#' @param x the time event data that is used for analysis.
+#' @param tbl display the result in tabular format. The values are 0=none, 1=basic, 2=detailed.
+#' @param fig display the result in figures. The values are 0=none, 1=basic, 2 and higher=more.
+#' @param txt display narrative output. The values are 0=none, 1=basic, 2=detailed.
+#' @param clr colors to use in displaying the figures.
+#' @param x.name #ask_Stan
+#'
+#' @return returns event time distribution with tables, figures, and a narrative.
+#' @export
+#'
+#' @examples #ask_Stan
+#'
 describe.event.timing=function(x,
                                tbl=1,
                                fig=1,
                                txt=1,
                                clr=NULL,
                                x.name=NULL)
-
 {
   ######################################
   # check for proper input
@@ -237,6 +270,25 @@ describe.event.timing=function(x,
 ##########################################
 # Describe a categorical variable with tables, figures, and a narrative
 
+#' Describe a categorical variable
+#'
+#' @param x the categorical variable to describe.
+#' @param tbl display the result in tabular format. The values are 0=none, 1=basic, 2=detailed.
+#' @param fig display the result in figures. The values are 0=none, 1=basic, 2 and higher=more.
+#' @param txt display narrative output. The values are 0=none, 1=basic, 2=detailed.
+#' @param clr colors to use in displaying the figures.
+#' @param x.name name of x variable to use in narrative output
+#' @param use.all indicates whether to include all data regardless of missingness. Default value is True.
+#'
+#' @return returns description of the categorical variable with tables, figures, and a narrative.
+#' @export
+#'
+#' @examples
+#' data_frame <- data.frame(len = c(11.2, 8.2, 10.0, 27.3, 14.5, 26.4, 4.2, 15.2, 14.7, 10.4),
+#'                          supp = c("VC","OJ","VC","VC","VC","OJ","VC","OJ","VC","OJ"),
+#'                          dose = c(0.5, 0.5, 0.5, 2.0, 1.5, 1.0, 1.0, 2.0, 0.5, 2.0))
+#' describe("supp",data_frame)
+#'
 describe.categorical=function(x,
                               tbl=1,
                               fig=1,
@@ -341,6 +393,24 @@ describe.categorical=function(x,
 #########################################
 # Describe a numeric variable with tables, figures, and a narrative
 
+#' Describe a numeric variable
+#'
+#' @param x the name of the variable in quotation marks.
+#' @param tbl A flag that indicates to display the number of table(s). Default value is 1.
+#' @param fig A flag that indicates to display the number of figure(s). Default value is 2.
+#' @param txt A flag that indicates to display text. Default value is 1.
+#' @param clr colors to use in displaying the plot(s).
+#' @param x.name character string giving name of x variable
+#'
+#' @return returns a description of the numeric variable with tables, figures, and a narrative.
+#' @export
+#'
+#' @examples
+#' data_frame <- data.frame(len = c(11.2, 8.2, 10.0, 27.3, 14.5, 26.4, 4.2, 15.2, 14.7, 10.4),
+#'                          supp = c("VC","OJ","VC","VC","VC","OJ","VC","OJ","VC","OJ"),
+#'                          dose = c(0.5, 0.5, 0.5, 2.0, 1.5, 1.0, 1.0, 2.0, 0.5, 2.0))
+#' describe("len",data_frame)
+#'
 describe.numeric=function(x,            # variable to describe
                           tbl=1,        # table: 0 = none, 1 = basic
                           fig=2,        # figure: 0 = none, 1 = boxplot, 2= boxplot+histogram, 3 = boxplot+histogram+qqnorm
@@ -462,7 +532,7 @@ describe.numeric=function(x,            # variable to describe
 
 
 ###################################
-#
+# #ask_Stan
 
 numeric.descriptive.table=function(x)
 
@@ -475,6 +545,22 @@ numeric.descriptive.table=function(x)
 ################################
 # Create a competing event time variable
 
+#' Creating a competing event time variable
+#' #probably needs a dataset as parameter.
+#'
+#' @param obs.time the time variable in the data set.
+#' @param obs.event the event variable in the data set.
+#' @param ev.key the event key. The default value is set to NULL.
+#'
+#' @return returns a new variable combining observation time and observation event
+#' @export
+#'
+#' @examples #ask_Stan
+#' data_frame <- data.frame(time = c(11.2, 8.2, 10.0, 27.3, 14.5, 26.4, 4.2, 15.2, 14.7, 10.4),
+#'                          event = c(0, 0, 1, 0, 1, 0, 1, 0, 0, 0),
+#'                          Age = c(50, 55, 45, 49, 52, 43, 62, 60, 70, 71))
+#' competing.event.time("time","event")
+#'
 competing.event.time=function(obs.time,
                               obs.event,
                               ev.key=NULL)
@@ -497,6 +583,17 @@ competing.event.time=function(obs.time,
 ###########################################
 # write a list of items as a narrative
 
+#' Write list items as a narrative
+#'
+#' @param x the vector containing the list items.
+#'
+#' @return returns the list items as a narrative.
+#' @export
+#'
+#' @examples
+#' x=c("result 1","result 2","result 3")
+#' text.list(x)
+#'
 text.list=function(x)
 
 {

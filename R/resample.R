@@ -1,3 +1,23 @@
+#' Resampling of a variable.
+#'
+#' @param input the variable to do the sampling for.
+#' @param data.set the name of the data set from which the variable is taken.
+#' @param r The number of random samples to be drawn from n(number of rows in data set). Default value is set to NULL.
+#' @param b the number of times the re-sampling process to do. Default value is set to 10,000.
+#' @param txt A flag that indicates to display text. Default value is 0.
+#' @param tbl A flag that indicates to display the number of table(s). Default value is 0.
+#' @param fig A flag that indicates to display the number of figure(s). Default value is 2.
+#' @param clr the color(s) of the plots. Default value is set to "royalblue","red".
+#'
+#' @return returns the re-sampling result of the variable with figures, tables and a narrative depending on the flags.
+#' @export
+#'
+#' @examples
+#' data_frame <- data.frame(len = c(11.2, 8.2, 10.0, 27.3, 14.5, 26.4, 4.2, 15.2, 14.7, 10.4),
+#'                          supp = c("VC","OJ","VC","VC","VC","OJ","VC","OJ","VC","OJ"),
+#'                          dose = c(0.5, 0.5, 0.5, 2.0, 1.5, 1.0, 1.0, 2.0, 0.5, 2.0))
+#' resample("len",data_frame)
+#'
 resample=function(input,data.set,
                   r=NULL,b=10000,
                   fig=2,txt=0,tbl=0,

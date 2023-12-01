@@ -1,3 +1,20 @@
+
+
+
+#' Describe a model
+#'
+#' @param form the formula that contains the variables in the form 'y~x'.
+#' @param data the data set name that contains the variables.
+#' @param tbl A flag that indicates to display the number of table(s). Default value is 1.
+#' @param fig A flag that indicates to display the number of figure(s). Default value is 1.
+#' @param txt A flag that indicates to display text. Default value is 1.
+#' @param clr The color(s) to be used in the plot(s).
+#'
+#' @return returns the model results in tables,figures and a narrative.
+#' @export
+#'
+#' @examples #ask_Stan
+
 model=function(form,data,
                tbl=1,fig=1,txt=1,
                clr=NULL)
@@ -60,6 +77,20 @@ model=function(form,data,
 
 library(survival)
 
+#' Create a model for survival data
+#'
+#' @param form the formula that contains the variables in the form 'y~x'.
+#' @param data the data set name that contains the variables.
+#' @param tbl A flag that indicates to display the number of table(s). Default value is 1.
+#' @param fig A flag that indicates to display the number of figure(s). Default value is 1.
+#' @param txt A flag that indicates to display text. Default value is 1.
+#' @param clr The color(s) to be used in the plot(s).
+#'
+#' @return returns the model results in tables,figures and a narrative.
+#' @export
+#'
+#' @examples #ask_Stan
+#'
 model.events=function(form,data,
                       tbl=1,fig=3,txt=1,
                       clr="rainbow")
@@ -246,6 +277,20 @@ model.events=function(form,data,
 }
 
 
+#' Create a model for binary class data
+#'
+#' @param form the formula that contains the variables in the form 'y~x'.
+#' @param data the data set name that contains the variables.
+#' @param tbl A flag that indicates to display the number of table(s). Default value is 1.
+#' @param fig A flag that indicates to display the number of figure(s). Default value is 1.
+#' @param txt A flag that indicates to display text. Default value is 1.
+#' @param clr The color(s) to be used in the plot(s).
+#'
+#' @return returns the model results in tables,figures and a narrative.
+#' @export
+#'
+#' @examples #ask_Stan
+#'
 model.binary=function(form,data,
                       tbl=1,fig=3,txt=1,
                       clr="rainbow")
@@ -275,6 +320,21 @@ model.binary=function(form,data,
 }
 
 
+#' Create a model for numeric data #ask_Stan
+#'
+#' @param form the formula that contains the variables in the form 'y~x'.
+#' @param data the name of the data set.
+#' @param tbl A flag that indicates to display the number of table(s). Default value is 1.
+#' @param fig A flag that indicates to display the number of figure(s). Default value is 3.
+#' @param txt A flag that indicates to display text. Default value is 1.
+#' @param clr the color(s) used in the plot(s).Default value is set to 'black' and 'red'.
+#'
+#' @return returns the model results with tables,plots and a narrative.
+#' @export
+#'
+#' @examples
+#' #ask_Stan
+#'
 model.numeric=function(form,data,
                        tbl=1,fig=3,txt=1,
                        clr=c("black","red"))
@@ -411,8 +471,20 @@ model.numeric=function(form,data,
 
 
 ##########################################
-# Generate narrative results for a model
+#
 
+#' Generate narrative results for a model
+#'
+#' `model.txt()` generates a text based narrative result of the model.
+#'
+#' @param model.result the result of the model ?? #ask_Stan
+#'
+#' @return return the model results in a text narrative depending on the model type.
+#' @export
+#'
+#' @examples
+#' ##ask_Stan
+#'
 model.txt=function(model.result)
 
 {
@@ -621,7 +693,16 @@ model.txt=function(model.result)
 ####################################################
 # Create a table of coefficient estimates for a competing risk regression model
 
-
+#' Create a table of coefficient estimates for a competing risk regression model
+#'
+#' @param crr.result the coefficient result of the risk regression model.
+#'
+#' @return returns the coefficient estimates in a data frame format.
+#' @export
+#'
+#' @examples
+#' #ask_Stan
+#'
 crr.tbl=function(crr.result)
 
 {
@@ -638,6 +719,17 @@ crr.tbl=function(crr.result)
 ##########################################
 # Fit and evaluate a Cox
 
+#' Test the fit of a Cox regression model #ask_Stan
+#'
+#' @param form the formula that contains the variables in the form 'y~x'.
+#' @param data the data set name that contains the variables.
+#'
+#' @return returns the result of the cox regression model in a data frame format
+#' @export
+#'
+#' @examples
+#' #ask_Stan
+#'
 fit.cox=function(form,data)
 
 {
@@ -665,6 +757,16 @@ fit.cox=function(form,data)
 #####################################
 # Create a table of hazard ratio estimates for a coxph model
 
+#' Create a table of hazard ratio estimates for a coxph model #ask_Stan
+#'
+#' @param coxph.result the result of the coxph model
+#'
+#' @return returns a data frame of hazard ratio estimates of the coxph model.
+#' @export
+#'
+#' @examples
+#' #ask_Stan
+#'
 coxph.tbl=function(coxph.result)
 
 {
@@ -694,6 +796,15 @@ coxph.tbl=function(coxph.result)
 #######################################
 # Create a table of coefficient estimates for a glm
 
+#' Create a table of coefficient estimates for a glm(generalized linear model)
+#'
+#' @param glm.result the result of the glm.
+#'
+#' @return returns the glm result in a data frame format.
+#' @export
+#'
+#' @examples #ask_Stan
+#'
 glm.tbl=function(glm.result)
 
 {
@@ -722,6 +833,17 @@ glm.tbl=function(glm.result)
 # Linear Regression on Ranks Model
 # Iman and Conover (1979) The use of the rank transform in regression.  Technometrics 21:499-509.
 
+#' Linear Regression on Ranks Model #ask_Stan
+#'
+#' @param x #ask_Stan
+#' @param y #ask_Stan
+#'
+#' @return #ask_Stan
+#' @export
+#'
+#' @examples
+#' #ask_Stan
+#'
 monotone.rank.model=function(x,y)
 {
   na=is.na(x)|is.na(y)
