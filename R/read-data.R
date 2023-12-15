@@ -6,7 +6,8 @@
 #' @export
 #'
 #' @examples
-#' read.data("binary.csv")
+#' csv=system.file("extdata", "gre_data.csv", package = "sbp")
+#' read.data(csv)
 #'
 read.data=function(file.name=NULL)
 
@@ -146,8 +147,7 @@ alert=function(...)
 #' @return print the alert message and stops execution of program.
 #' @export
 #'
-#' @examples
-#' stop.alert("found error: program will halt")
+#' @examples ##no_need
 #'
 stop.alert=function(...)
 {

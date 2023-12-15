@@ -211,12 +211,12 @@ normality.test=function(x)
 #' @return clears the R environment and starts new session with the source files and packages.
 #' @export
 #'
-#' @examples
-#' fresh.start()
+#' @examples #no_need
+#'
 #'
 fresh.start=function()
 {
   rm(list=ls())
-  SBP.code.path="https://raw.githubusercontent.com/stan-pounds/Simple-Biostats-Program/main/"
+  SBP.code.path="https://raw.githubusercontent.com/hmashrique/sbp_associate/main/R/"
   source(paste0(SBP.code.path,"setup-SBP.R"))
 }
