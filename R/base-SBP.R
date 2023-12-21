@@ -217,6 +217,6 @@ normality.test=function(x)
 fresh.start=function()
 {
   rm(list=ls())
-  SBP.code.path="https://raw.githubusercontent.com/hmashrique/sbp_associate/main/R/"
+  SBP.code.path="https://raw.githubusercontent.com/stan-pounds/Simple-Biostats-Program/main/"
   source(paste0(SBP.code.path,"setup-SBP.R"))
 }
