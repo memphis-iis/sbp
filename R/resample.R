@@ -16,10 +16,10 @@
 #' data_frame <- data.frame(len = c(11.2, 8.2, 10.0, 27.3, 14.5, 26.4, 4.2, 15.2, 14.7, 10.4),
 #'                          supp = c("VC","OJ","VC","VC","VC","OJ","VC","OJ","VC","OJ"),
 #'                          dose = c(0.5, 0.5, 0.5, 2.0, 1.5, 1.0, 1.0, 2.0, 0.5, 2.0))
-#' resample("len",data_frame)
+#' resample("len",data_frame,b=1000)
 #'
 resample=function(input,data.set,
-                  r=NULL,b=10000,
+                  r=NULL,b=5000,
                   fig=2,txt=0,tbl=0,
                   clr=c("royalblue","red"))
 

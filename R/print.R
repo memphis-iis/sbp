@@ -7,6 +7,7 @@
 #' @param txt A flag to show texts in the result. Default value is set to TRUE.
 #' @param method #ask_Stan
 #' @param ref A flag to show references in the result. Default value is set to TRUE.
+#' @param ... other parameters passed to SBP print method.
 #'
 #' @return shows a functions results containing tables, results, methods and references.
 #' @export
@@ -14,7 +15,7 @@
 #' @examples
 #' #ask_Stan
 #'
-print.SBP.result=function(sbp.result,knt=T,tbl=T,txt=T,method=T,ref=T)
+print.SBP.result=function(sbp.result,knt=T,tbl=T,txt=T,method=T,ref=T, ...)
 
 {
   if ((!is.null(sbp.result$tbl))&&(tbl))

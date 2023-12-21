@@ -98,7 +98,7 @@ describe=function(clm.name,    # name of column in quotation marks
 #' @return returns event time distribution with tables, figures, and a narrative.
 #' @export
 #'
-#' @examples #ask_Stan
+#' @examples #ask_Stan #no_need
 #'
 describe.event.timing=function(x,
                                tbl=1,
@@ -283,11 +283,7 @@ describe.event.timing=function(x,
 #' @return returns description of the categorical variable with tables, figures, and a narrative.
 #' @export
 #'
-#' @examples
-#' data_frame <- data.frame(len = c(11.2, 8.2, 10.0, 27.3, 14.5, 26.4, 4.2, 15.2, 14.7, 10.4),
-#'                          supp = c("VC","OJ","VC","VC","VC","OJ","VC","OJ","VC","OJ"),
-#'                          dose = c(0.5, 0.5, 0.5, 2.0, 1.5, 1.0, 1.0, 2.0, 0.5, 2.0))
-#' describe("supp",data_frame)
+#' @examples #no_need
 #'
 describe.categorical=function(x,
                               tbl=1,
@@ -405,11 +401,7 @@ describe.categorical=function(x,
 #' @return returns a description of the numeric variable with tables, figures, and a narrative.
 #' @export
 #'
-#' @examples
-#' data_frame <- data.frame(len = c(11.2, 8.2, 10.0, 27.3, 14.5, 26.4, 4.2, 15.2, 14.7, 10.4),
-#'                          supp = c("VC","OJ","VC","VC","VC","OJ","VC","OJ","VC","OJ"),
-#'                          dose = c(0.5, 0.5, 0.5, 2.0, 1.5, 1.0, 1.0, 2.0, 0.5, 2.0))
-#' describe("len",data_frame)
+#' @examples #no_need
 #'
 describe.numeric=function(x,            # variable to describe
                           tbl=1,        # table: 0 = none, 1 = basic
@@ -586,15 +578,18 @@ competing.event.time=function(obs.time,
 #' Write list items as a narrative
 #'
 #' @param x the vector containing the list items.
+#' @param ... other parameters
 #'
 #' @return returns the list items as a narrative.
+#'
+#' @export text.list
 #' @export
 #'
 #' @examples
 #' x=c("result 1","result 2","result 3")
 #' text.list(x)
 #'
-text.list=function(x)
+text.list=function(x, ...)
 
 {
   if (length(x)==1) return(x)
