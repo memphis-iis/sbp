@@ -1,0 +1,62 @@
+---
+title: "SBP_Compare_Example1"
+output: rmarkdown::html_vignette
+vignette: >
+  %\VignetteIndexEntry{SBP_Compare_Example1}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
+---
+
+```{r, include = FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>"
+)
+```
+
+```{r setup}
+library(sbp)
+```
+
+```{r}
+#Example Data
+library("penalized")
+data(nki70)
+library("riskRegression")
+data(Melanoma)
+```
+
+The compare() method will display a visual plot showing the proportions of data. These plots are output in the console as numeric measures, both as frequency and relative frequency. Lastly, an additional test is done to assess the association between the measures.
+
+In this example code, the compare() method will plot the association between ER and Grade. By default, calling the method produces the visual plot in the plot window.
+
+```{r}
+ER.Grade=compare(ER~Grade,nki70)
+#ER.Grade
+```
+
+Additional information can be displayed by calling from the attributes associate with the compare object.
+
+$tbl is the table frequency and relative frequency information.
+
+```{r}
+ER.Grade$tbl
+```
+
+$txt is the result of the testing performed.
+
+```{r}
+ER.Grade$txt
+```
+
+$method display the details of the method used to compare the data.
+
+```{r}
+ER.Grade$method
+```
+
+A reference for the procedure is also provided in the compare object.
+
+```{r}
+ER.Grade$ref
+```

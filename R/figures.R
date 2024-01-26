@@ -574,18 +574,23 @@ mosaic.plot=function(form,data,clr="rainbow",
 #' Categorize a numeric variable by quantile
 #'
 #' @param x name of the numeric variable
+#' @param ... other parameters passed to quantile method
 #' @param n the number of subgroup to create.By default, the division value is 4, meaning it will create quartile division.
 #'
 #' @return returns the variable data as quantile/subgroups.
+#'
+#' @export cut.quantile
 #' @export
 #'
 #' @examples
+#'
 #' data_frame <- data.frame(len = c(11.2, 8.2, 10.0, 27.3, 14.5, 26.4, 4.2, 15.2, 14.7, 10.4),
 #'                          supp = c("VC","OJ","VC","VC","VC","OJ","VC","OJ","VC","OJ"),
 #'                          dose = c(0.5, 0.5, 0.5, 2.0, 1.5, 1.0, 1.0, 2.0, 0.5, 2.0))
+#'
 #' cut.quantile(data_frame$len)
 #'
-cut.quantile=function(x,n=4)
+cut.quantile=function(x, n=4, ...)
 {
   qntl=stats::quantile(x,(1:(n-1))/n,na.rm=T)
   qntl=c(-Inf,qntl,Inf)

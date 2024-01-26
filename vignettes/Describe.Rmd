@@ -1,0 +1,63 @@
+---
+title: "SBP_Describe_Example2"
+output: rmarkdown::html_vignette
+vignette: >
+  %\VignetteIndexEntry{SBP_Describe_Example2}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
+---
+
+```{r, include = FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>"
+)
+```
+
+```{r setup}
+library(sbp)
+```
+
+```{r}
+#Example Data
+library("penalized")
+data(nki70)
+library("riskRegression")
+data(Melanoma)
+```
+
+The describe() method will provide descriptive information and statistics about the data provided.
+
+In this example code, the describe() method will plot the Age data on a scatter plot, but also provide a text output detailing attributes of Age and a table of the descriptive statistics.
+
+The visualization of Age is produced by default when running the describe() method.
+
+```{r}
+age=describe("Age",nki70)
+```
+
+Other parts of describe() can be accessed as attributes on the describe object.
+
+$txt produces the text description of the data and features.
+
+```{r}
+age$txt
+```
+
+$tbl is an output of the descriptive statistics, including the five number summary, and a p-value for a test for normality.
+
+```{r}
+age$tbl
+```
+
+$method provides information on what testing procedures were used to obtain the descriptive information.
+
+```{r}
+age$method
+```
+
+$ref are the references associated with the use of the describe() method.
+
+```{r}
+age$ref
+```

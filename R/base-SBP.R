@@ -211,8 +211,8 @@ normality.test=function(x)
 #' @return clears the R environment and starts new session with the source files and packages.
 #' @export
 #'
-#' @examples
-#' fresh.start()
+#' @examples #no_need
+#'
 #'
 fresh.start=function()
 {
