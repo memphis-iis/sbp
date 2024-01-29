@@ -1,0 +1,57 @@
+---
+title: "SBP_Correlate_Example1"
+output: rmarkdown::html_vignette
+vignette: >
+  %\VignetteIndexEntry{SBP_Correlate_Example1}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
+---
+
+```{r, include = FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>"
+)
+```
+
+```{r setup}
+library(sbp)
+
+#Example Data
+library("penalized")
+data(nki70)
+library("riskRegression")
+data(Melanoma)
+```
+
+The correlate() method will display a visual plot showing the relationship of data on a scatter plot.
+
+In this example code, the correlate() method will plot the association between DIAPH3 and FGF18 By default, calling the method produces the visual plot in the plot window.
+
+The visualization of the correlation can be seen by a linear regression line present on the graph.
+
+```{r}
+DIAPH3.FGF18=correlate(DIAPH3~FGF18,nki70)
+```
+
+$method produces the detail information on how the relationship between the data was obtained.
+
+```{r}
+DIAPH3.FGF18$method
+```
+
+$txt provides the correlation statistics.
+
+```{r}
+DIAPH3.FGF18$txt
+```
+
+Here another example of the correlation is also provided, however, in this example the correlate() method is able to determine that Spearman's correlation is better suited for this data than Pearson's correlation.
+
+```{r}
+QSCN6L1.RAB6B=correlate(QSCN6L1~RAB6B,nki70)
+
+QSCN6L1.RAB6B$method
+
+QSCN6L1.RAB6B$txt
+```

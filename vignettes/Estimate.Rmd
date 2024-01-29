@@ -1,0 +1,69 @@
+---
+title: "SBP_Estimate_Example3"
+output: rmarkdown::html_vignette
+vignette: >
+  %\VignetteIndexEntry{SBP_Estimate_Example3}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
+---
+
+```{r, include = FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>"
+)
+```
+
+```{r setup}
+library(sbp)
+```
+
+```{r}
+#Example Data
+library("penalized")
+data(nki70)
+library("riskRegression")
+data(Melanoma)
+```
+
+The estimate() method will provide descriptive information and statistics about the data provided.
+
+In this example code, the estimate() method will plot the ESM1 data on a box plot, but also provide a text output detailing attributes of ESM1 and a table of the descriptive statistics. These values include estimates of the poulation value provided in estimate().
+
+The visualization of ESM1 is produced by default when running the estimate() method.
+
+```{r}
+ESM1=estimate("ESM1",nki70)
+```
+
+$tbl produces a display containing the descriptive statistics and other information about the population vlaue being estimated.
+
+```{r}
+ESM1$tbl
+```
+
+$txt describes the general results of the estimated population value.
+
+```{r}
+ESM1$txt
+```
+
+$method details what methods were used to obtain the descriptive information.
+
+```{r}
+ESM1$method
+```
+
+$ref are the assocaited references with the procedures used in estimate().
+
+```{r}
+ESM1$ref
+```
+
+In this examples estimate() in used on the Age data that is also present in the describe vignette. The results are roughly identical as the population value does not feature portions that need to be estimated.
+
+(We should check that to be sure.)
+
+```{r}
+Age=estimate("Age",nki70)
+```

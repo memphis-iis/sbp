@@ -1,4 +1,12 @@
-#' Find correlation between 2 numeric variables.
+#'
+#' Correlation between 2 numeric variables.
+#'
+#' @description
+#' The `correlate()` function finds the correlation between 2 variables. Given two numeric variables and a
+#' data set, it finds their correlation(if there exists any) and also their correlation strength.
+#'
+#' The correlation results of the two variables is presented as a text narrative,plots and references.
+#'
 #'
 #' @param form The formula that takes the 2 numeric variables.
 #' @param data The data set that contains the 2 variables.

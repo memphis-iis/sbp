@@ -1,4 +1,7 @@
-#' Read data file of different extensions
+#' Read a data file
+#'
+#' The function `read.data()` reads data files of different extensions(csv, txt, Rdata, xlsx) and returns
+#' the data as a data frame.
 #'
 #' @param file.name the name of the file with extension.
 #'
@@ -103,6 +106,8 @@ read.data=function(file.name=NULL)
 
 #' Extract a file extension type
 #'
+#' The function `file.extension()` reads a data file and returns its file type.
+#'
 #' @param file.name the name of the file with extension
 #'
 #' @return returns the extension name of the file
@@ -121,7 +126,9 @@ file.extension=function(file.name)
 ####################################
 # Alert the user with a message
 
-#' User alert message
+#' User Alert Message
+#'
+#' The function `alert()` takes an input string and prints it as an alert message.
 #'
 #' @param ... the alert message as string in the function
 #'
@@ -141,6 +148,9 @@ alert=function(...)
 # Alert the user and stop the calculation
 
 #' Alert user and stop calculation
+#'
+#' #this function halts the package building process. Should be removed.
+#' #ask_stan
 #'
 #' @param ... the error message as string in the function
 #'

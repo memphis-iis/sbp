@@ -1,5 +1,11 @@
 #' Resampling of a variable.
 #'
+#' @description
+#' The function `resample()` samples a numeric variable/feature of a data set. It takes the input for the number of random
+#' samples(r) to be drawn from data(n rows) and also the number of times(b) the re-sampling process is to be done.
+#'
+#' It returns the re-sampling result of the numeric variable in narrative text, figures, tables.
+#'
 #' @param input the variable to do the sampling for.
 #' @param data.set the name of the data set from which the variable is taken.
 #' @param r The number of random samples to be drawn from n(number of rows in data set). Default value is set to NULL.

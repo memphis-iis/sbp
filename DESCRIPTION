@@ -22,3 +22,8 @@ Imports:
     stats,
     survival,
     utils
+Suggests: 
+    rmarkdown,
+    penalized,
+    riskRegression
+VignetteBuilder: knitr

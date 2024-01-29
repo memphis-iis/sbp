@@ -5,9 +5,16 @@
 
 #######################################
 #'
-#' Estimate population value
+#' Estimate Population Value
 #'
-#' This function estimates the population value of a column in a data frame.
+#' @description
+#' The function `estimate()` estimates the population value of a column in a data set. Given a variable and a data set,
+#'  it estimates the population value of that variable based on its data type.
+#'  * If the variable is of `survival` class, it estimates the timing of events in that categorical variable.
+#'  * If the variable is of `numeric` class, it estimates the center of the distribution of that variable.
+#'  * If the variable is of `factor` class, it estimates the proportion(s) of that categorical variable.
+#'
+#' The estimation result of the variable is presented as text narrative, plots, tables, references.
 #'
 #' @param clm.name The name of the column to estimate.
 #' @param data The data frame containing the column.
