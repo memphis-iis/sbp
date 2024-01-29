@@ -1,7 +1,7 @@
-
-
-
+#
 #' Describe a model
+#'
+#' #ask_stan
 #'
 #' @param form the formula that contains the variables in the form 'y~x'.
 #' @param data the data set name that contains the variables.
@@ -78,6 +78,8 @@ model=function(form,data,
 library(survival)
 
 #' Create a model for survival data
+#'
+#' #ask_stan
 #'
 #' @param form the formula that contains the variables in the form 'y~x'.
 #' @param data the data set name that contains the variables.
@@ -279,6 +281,8 @@ model.events=function(form,data,
 
 #' Create a model for binary class data
 #'
+#' #ask_stan
+#'
 #' @param form the formula that contains the variables in the form 'y~x'.
 #' @param data the data set name that contains the variables.
 #' @param tbl A flag that indicates to display the number of table(s). Default value is 1.
@@ -320,7 +324,9 @@ model.binary=function(form,data,
 }
 
 
-#' Create a model for numeric data #ask_Stan
+#' Create a Model for Numeric Data
+#'
+#' #ask_Stan
 #'
 #' @param form the formula that contains the variables in the form 'y~x'.
 #' @param data the name of the data set.
@@ -473,9 +479,9 @@ model.numeric=function(form,data,
 ##########################################
 #
 
-#' Generate narrative results for a model
+#' Generate Narrative Results for a Model
 #'
-#' `model.txt()` generates a text based narrative result of the model.
+#' The function `model.txt()` generates a text based narrative result of the model.
 #'
 #' @param model.result the result of the model ?? #ask_Stan
 #'
@@ -693,7 +699,9 @@ model.txt=function(model.result)
 ####################################################
 # Create a table of coefficient estimates for a competing risk regression model
 
-#' Create a table of coefficient estimates for a competing risk regression model
+#' Create a table of Coefficient estimates for a Competing Risk Regression Model
+#'
+#' #ask_stan
 #'
 #' @param crr.result the coefficient result of the risk regression model.
 #'
@@ -719,7 +727,9 @@ crr.tbl=function(crr.result)
 ##########################################
 # Fit and evaluate a Cox
 
-#' Test the fit of a Cox regression model #ask_Stan
+#' Test the fit of a Cox Regression model
+#'
+#' #ask_Stan
 #'
 #' @param form the formula that contains the variables in the form 'y~x'.
 #' @param data the data set name that contains the variables.
@@ -755,9 +765,11 @@ fit.cox=function(form,data)
 
 
 #####################################
-# Create a table of hazard ratio estimates for a coxph model
+# Create a table of Hazard Ratio Estimates for a coxph model
 
-#' Create a table of hazard ratio estimates for a coxph model #ask_Stan
+#' Create a table of hazard ratio estimates for a coxph model
+#'
+#' #ask_Stan
 #'
 #' @param coxph.result the result of the coxph model
 #'
@@ -794,9 +806,11 @@ coxph.tbl=function(coxph.result)
 
 
 #######################################
-# Create a table of coefficient estimates for a glm
+# Create a table of Coefficient Estimates for a GLM
 
 #' Create a table of coefficient estimates for a glm(generalized linear model)
+#'
+#' #ask_stan
 #'
 #' @param glm.result the result of the glm.
 #'
@@ -833,7 +847,9 @@ glm.tbl=function(glm.result)
 # Linear Regression on Ranks Model
 # Iman and Conover (1979) The use of the rank transform in regression.  Technometrics 21:499-509.
 
-#' Linear Regression on Ranks Model #ask_Stan
+#' Linear Regression on Ranks Model
+#'
+#' #ask_Stan
 #'
 #' @param x #ask_Stan
 #' @param y #ask_Stan

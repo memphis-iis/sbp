@@ -1,6 +1,8 @@
 #'
 #' Print a function's result in a narrative
 #'
+#' The function `print.SBP.result()` prints the result of a function in a properly narrated format.
+#'
 #' @param sbp.result The variable that stores the calculation results.
 #' @param knt A flag that identifies if knitr is available. Default value is set to TRUE. #ask_Stan
 #' @param tbl A flag to show tables in the result. Default value is set to TRUE.
@@ -68,6 +70,8 @@ print.SBP.result=function(sbp.result,knt=T,tbl=T,txt=T,method=T,ref=T, ...)
 
 #' Paste the table results in a word file
 #'
+#' #ask_stan
+#'
 #' @param SBP.result the format of the result.
 #'
 #' @return outputs the result tables in a word file.
@@ -106,6 +110,9 @@ word.table=function(SBP.result)
 }
 
 #' Print SBP results in power point slides
+#'
+#' The function `SBP.example.Rmd.slides()` prints the SBP formatted result in power point slides.
+#' #ask_stan
 #'
 #' @param SBP.code.string #ask_Stan
 #' @param slide.title #ask_Stan

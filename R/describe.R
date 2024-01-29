@@ -1,10 +1,16 @@
-
-
 ############################################
 # Compute descriptive stats, tables, figures, and narrative
 
-
 #' Describe a Variable/Feature
+#'
+#' @description
+#' The `describe()` function describes a variable/feature of a data set. Given a variable and a data set,
+#'  it computes descriptive stats of that variable based on its data type.
+#'  * If the variable is of `survival` class, it describes its event timing statistics.
+#'  * If the variable is of `numeric` class, it describes its numeric statistics.
+#'  * If the variable is of `factor` class, it describes its categorical statistics.
+#'
+#' The descriptive statistics of the variable is presented as text narrative, plots, tables, references.
 #'
 #' @param clm.name the name of the column in quotation marks.
 #' @param data the name of the data set.

@@ -5,6 +5,9 @@
 
 #' Create a SBP box plot
 #'
+#' The function `box.plot()` creates a box plot based on the input data. The input data can be both a formula(y~x)
+#' or a variable/feature in a data set.
+#'
 #' @param input the input as a column name in quotation marks or a formula.
 #' @param data the data set which contains the input column(s).
 #' @param y.name the name of the "y" column of the data set. Default value is set to NULL.
@@ -75,6 +78,8 @@ box.plot=function(input,data,y.name=NULL,clr="rainbow")
 
 #' Create a SBP pie plot
 #'
+#' The function `pie.plot()` creates a pie plot of a given variable/feature of a data set.
+#'
 #' @param y.clm the numerical variable in quotations from data set
 #' @param data name of the data set
 #' @param y.name the name of the 'y' variable in the formula. Default value is NULL. #ask_Stan
@@ -128,6 +133,8 @@ pie.plot=function(y.clm,data,y.name=NULL,all=F,clr=NULL)
 # SBP bar plot
 
 #' Create a SBP bar plot
+#'
+#' The function `bar.plot()` creates a bar plot of a given variable of a data set.
 #'
 #' @param y.clm the "y" column of the data set.
 #' @param data the data set from which the data is taken.
@@ -199,6 +206,8 @@ bar.plot=function(y.clm,data,all=F,y.name=NULL,clr=NULL)
 
 #' Create a SBP normal quantile-quantile plot
 #'
+#' The function `nqq.plot()` creates a quantile quantile plot of a data set variable/feature.
+#'
 #' @param y.clm the "y" column of the data set.
 #' @param data the data set from which the "y" column is taken.
 #' @param y.name the name of the "y" column. Default value is set to NULL.
@@ -232,8 +241,10 @@ nqq.plot=function(y.clm,data,y.name=NULL,clr="black")
 
 #########################################################
 # Event plot
-# Does it show any graphs? dont know much about survival data
-#' Create a SBP event plot #ask_Stan
+
+#' Create a SBP event plot
+#'
+#' #Does it show any graphs? #ask_Stan
 #'
 #' @param input the input can be both a column with quatation mark or a formula.
 #' @param data the name of the data set that contains the input column(s).
@@ -409,6 +420,8 @@ event.plot=function(input,data,y.name=NULL,clr=NULL)
 
 #' Create a SBP scatter plot
 #'
+#' The function `scatter.plot()` creates a scatter plot from a formula(y~x).
+#'
 #' @param form the formula the takes two numerical variables.
 #' @param data The data frame that contains the 2 variables.
 #' @param clr the color(s) of the plot. Default value is set to "black" and "red".
@@ -501,6 +514,8 @@ scatter.plot=function(form,data,
 
 #' Create a SBP mosaic plot
 #'
+#' The function `mosaic.plot()` creates a mosaic graph from a formula(y~x).
+#'
 #' @param form The formula which is used to compare categorical data with a numeric variable.
 #' @param data name of the data set where the variables are taken.
 #' @param clr the color of the graphs in the plot. Default value is set to "rainbow".
@@ -572,6 +587,9 @@ mosaic.plot=function(form,data,clr="rainbow",
 # categorize a numeric variable by quantile
 
 #' Categorize a numeric variable by quantile
+#'
+#' The function `cut.quantile()` divides a variables/feature into a given number of sub-groups. By default, it
+#' divides the variable into 4 subgroups(quartiles).
 #'
 #' @param x name of the numeric variable
 #' @param ... other parameters passed to quantile method

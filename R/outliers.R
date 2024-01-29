@@ -2,6 +2,9 @@
 
 #' Find Outliers in a numeric variable
 #'
+#' The function `outliers()` finds out if there exists any outliers in a numeric data variable. The result of the
+#' function is given as a text narrative.
+#'
 #' @param clm the numeric variable to check for Outliers.
 #' @param dset the data set name that has the column data.
 #' @param y.name the name of the column variable.
