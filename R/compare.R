@@ -1,7 +1,18 @@
 #####################################
 # Compare two variables
 
-#' The function which compares two variables.
+#' Compare two Variables
+#'
+#' @description
+#' The `compare()` function compares two variables/features of a data set. Given two variables as
+#' a formula (y~x), it compares the variables based on the data type of `y`.
+#'  * If y variable is of `survival` class, it compares the events.
+#'  * If y variable is of `numeric` class, it compares the centers.
+#'  * If y variable is of `factor` class, it compares the proportions.
+#'
+#' The comparison results of the two variables are presented as text narrative, plots, tables, references.
+#'
+#'
 #'
 #' @param form The formula which is used to define the relationship of the two variables.
 #' @param data The data set from which the two variables are taken.

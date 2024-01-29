@@ -3,6 +3,8 @@
 
 #' Choose Colors
 #'
+#' Define `n` number of colors from a given color palette.
+#'
 #' @param n the number of colors to add
 #' @param clr.palette source color name. Default value is set to "rainbow"
 #'
@@ -68,6 +70,8 @@ define.colors=function(n,
 
 #' Display Color Palette
 #'
+#' Display the `n` number of colors chosen from the color palette.
+#'
 #' @param n.colors the number to color to show in each palette. The default value of n.colors is set to 8.
 #'
 #' @return displays the n.colors in each palette
@@ -109,6 +113,8 @@ show.palettes=function(n.colors=8)
 
 #' Display Available Colors
 #'
+#' Display the color palettes available in R.
+#'
 #' @return shows the available colors in R
 #' @export
 #'
@@ -143,6 +149,8 @@ show.colors=function()
 }
 
 #' Find if Color Exists
+#'
+#' Find out if a color exists in R.
 #'
 #' @param x the name of the color
 #'

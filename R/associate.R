@@ -1,6 +1,9 @@
 
 #' Associate: Compare two variables based on their type
 #'
+#' `associate()` function shows the statistical relationship between two variables/features
+#'  with a narrative, plots and references.
+#'
 #' @param forms The formula that takes the 2 variables.
 #' @param data The data set name that contains the 2 variables.
 #' @param txt A flag that indicates to display text. Default value is 1.

@@ -1,8 +1,8 @@
 #################################################
-# get a data set
-
-
-#' Get Data Set from the R global environment
+#'
+#' Get Data Set from R global environment
+#'
+#' Get a data set that is built-in in the R global environment
 #'
 #' @param data.set the name of the data set
 #'
@@ -46,6 +46,8 @@ get.data.set=function(data.set)
 # Extract a column of data from a data set
 
 #' Get Column Data
+#'
+#' Get a column/feature data from a given data set
 #'
 #' @param y the exact column name or close match to its name
 #' @param dset the data set from which the column data will be extracted
@@ -106,6 +108,8 @@ get.y.clm=function(y,dset)
 
 #' Represent input argument as a character
 #'
+#' Given an input as argument, convert it into character(s)
+#'
 #' @param x the input argument
 #'
 #' @return returns the input argument as character string
@@ -131,6 +135,8 @@ arg.as.char=function(x)
 
 
 #' Get Argument Value
+#'
+#' #ask_stan
 #'
 #' @param call.string the string that is called and converted into string
 #' @param arg.string the string to match with
@@ -175,6 +181,9 @@ get.arg=function(call.string, # obtain with deparse(match.call())
 
 #' Perform a Normality Test
 #'
+#' Perform a normality test on a given column of a data set. If sample size, n < 3000,
+#' it performs a `shapiro` test, otherwise performs a `ks` test.
+#'
 #' @param x the feature in the data set whose distribution will be tested.
 #'
 #' @return returns the p-value of the feature that implies the distribution of the data.
@@ -207,6 +216,8 @@ normality.test=function(x)
 # clean out R memory and start over
 
 #' Fresh R Session
+#'
+#' not sure if its needed in a package.
 #'
 #' @return clears the R environment and starts new session with the source files and packages.
 #' @export
