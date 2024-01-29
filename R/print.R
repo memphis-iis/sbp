@@ -1,7 +1,7 @@
 #'
 #' Print a function's result in a narrative
 #'
-#' The function `print.SBP.result()` prints the result of a function in a properly narrated format.
+#' The function `show.SBP.result()` prints the result of a function in a properly narrated format.
 #'
 #' @param sbp.result The variable that stores the calculation results.
 #' @param knt A flag that identifies if knitr is available. Default value is set to TRUE. #ask_Stan
@@ -17,7 +17,7 @@
 #' @examples
 #' #ask_Stan
 #'
-print.SBP.result=function(sbp.result,knt=T,tbl=T,txt=T,method=T,ref=T, ...)
+show.SBP.result=function(sbp.result,knt=T,tbl=T,txt=T,method=T,ref=T, ...)
 
 {
   if ((!is.null(sbp.result$tbl))&&(tbl))
@@ -140,25 +140,25 @@ SBP.example.Rmd.slides=function(SBP.code.string,slide.title)
   write("``` \n",file="")
 
   write("```{r,eval=T,echo=F}",file="")
-  write(paste0("print.SBP.result(",res.name,",method=F,ref=F)"),file="")
+  write(paste0("show.SBP.result(",res.name,",method=F,ref=F)"),file="")
   write("``` \n",file="")
 
   write(paste0("## ",slide.title,"\n "),file="")
 
   write("```{r,eval=T,echo=F}",file="")
-  write(paste0("print.SBP.result(",res.name,",txt=F,tbl=F)"),file="")
+  write(paste0("show.SBP.result(",res.name,",txt=F,tbl=F)"),file="")
   write("``` \n",file="")
 
   write(paste0("## ",slide.title,"\n "),file="")
 
   write("```{r,eval=T,echo=F,results='asis'}",file="")
-  write(paste0("print.SBP.result(",res.name,",method=F,ref=F)"),file="")
+  write(paste0("show.SBP.result(",res.name,",method=F,ref=F)"),file="")
   write("``` \n",file="")
 
   write(paste0("## ",slide.title,"\n "),file="")
 
   write("```{r,eval=T,echo=F,results='asis'}",file="")
-  write(paste0("print.SBP.result(",res.name,",txt=F,tbl=F)"),file="")
+  write(paste0("show.SBP.result(",res.name,",txt=F,tbl=F)"),file="")
   write("``` \n",file="")
 
 }
