@@ -42,14 +42,15 @@ estimate=function(clm.name,
                   fig=1,
                   txt=1,
                   clr=NULL,
-                  x.name=NULL)
-
+                  x.name=NULL,
+                  use.all=T)
+  
 {
   data=data.frame(data)
   x=get.y.clm(clm.name,data)
   if (is.null(x.name))
     x.name=attr(x,"clm.name")
-  res=estimate.pop.value(x,null,tbl,fig,txt,clr,x.name)
+  res=estimate.pop.value(x,null,tbl,fig,txt,clr,x.name,use.all)
   return(res)
 }
 
@@ -85,8 +86,9 @@ estimate.pop.value=function(x,           # categorical variable to describe
                             fig=1,       # figure output (0=none; 1=basic; 2 and higher = more)
                             txt=1,       # narrative output (0=none; 1=basic; 2=detailed)
                             clr=NULL,    # color(s) to use
-                            x.name=NULL) # name of x variable to use in narrative output
-
+                            x.name=NULL, # name of x variable to use in narrative output
+                            use.all=T)
+  
 {
   if(is.null(x.name))
   {
@@ -105,7 +107,7 @@ estimate.pop.value=function(x,           # categorical variable to describe
 
   if (any(x.class%in%c("factor","character","ordered")))
   {
-    res=estimate.proportion(x,tbl,fig,txt,clr,nmx)
+    res=estimate.proportion(x,tbl,fig,txt,clr,nmx,use.all)
     return(res)
   }
 
@@ -196,7 +198,8 @@ estimate.proportion=function(x,           # categorical variable to describe
                              fig=1,       # figure output (0=none; 1=basic; 2 and higher = more)
                              txt=1,       # narrative output (0=none; 1=basic; 2=detailed)
                              clr=NULL,    # color(s) to use
-                             x.name=NULL) # name of x variable to use in narrative output
+                             x.name=NULL, # name of x variable to use in narrative output
+                             use.all=T)
 {
   if(is.null(x.name))
   {
@@ -204,9 +207,10 @@ estimate.proportion=function(x,           # categorical variable to describe
     x.name=get.arg(cll,"x")
   }
   nmx=x.name
-
-  desc.res=describe.categorical(x,tbl=1,x.name=nmx,clr=clr,fig=fig,txt=txt)
-
+  
+  desc.res=describe.categorical(x,tbl=1,x.name=nmx,clr=clr,fig=fig,txt=txt,
+                                use.all=use.all)
+  
   n=sum(desc.res$tbl$n)
   k=nrow(desc.res$tbl)
   ci.tbl=matrix(NA,k,2)

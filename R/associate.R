@@ -48,10 +48,10 @@ associate <- function(forms, data,
   x <- data[, independ_x]
 
   ## if both x and y variable are numerical, then use correlate()
-
-  if ((class(x) %in% c("numeric", "double", "integer")) &&
-      (class(y) %in% c("numeric", "double", "integer"))) {
-
+  
+  if ((class(x)[1] %in% c("numeric", "double", "integer")) &&
+      (class(y)[1] %in% c("numeric", "double", "integer"))) {
+    
     #print("use correlate method")
     res <- correlate(forms, data, txt= txt, tbl= tbl, fig= fig, y.name= NULL, x.name= NULL, clr= "red", line= line)
     class(res) <- "SBP.result"

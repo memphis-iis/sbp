@@ -44,9 +44,9 @@ outliers=function(clm,dset,y.name=NULL,fig=1,txt=1,
     x.out=x%in%c(bx.out,lts.out)
     x.clrs=rep(clrs[1],length(x))
     x.clrs[x.out]=clrs[2]
-
-
-    if (fig>0)
+    
+    fnl.txt=NULL
+    if (fig>0) 
     {
       y=jitter(rep(1,length(x)))
       par(mar=rep(4,4))
@@ -54,7 +54,7 @@ outliers=function(clm,dset,y.name=NULL,fig=1,txt=1,
            pch=19,col=x.clrs)
     }
 
-    fnl.txt=character()
+    #fnl.txt=character()
     if (txt>0)
     {
       fnl.txt=paste0("No values of ",y.name," met the boxplot or least trimmed squares definition of outlier (Rousseeuw 1984).")

@@ -25,7 +25,7 @@
 #' resample("len",data_frame,b=1000)
 #'
 resample=function(input,data.set,
-                  r=NULL,b=5000,
+                  r=NULL,b=10000,
                   fig=2,txt=0,tbl=0,
                   clr=c("royalblue","red"))
 

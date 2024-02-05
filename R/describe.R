@@ -73,17 +73,17 @@ describe=function(clm.name,    # name of column in quotation marks
 
   if (is.null(res))
     stop("Invalid input class.")
+  
+  res.est = estimate(clm.name, data, null=NULL, tbl, fig, txt, clr, y.name,use.all)
 
-  res.est = estimate(clm.name, data, null=NULL, tbl, fig, txt, clr, y.name)
-
-  #out.clm=get.y.clm(clm.name,data)
-  res.out = outliers(clm.name, data, y.name, fig, txt, clr)
-
-  comb.res=list(txt=c(res.est$txt,res.out$txt), #Multiple output with relevant info
+  res.txt=unique(c(res$txt,
+                 res.est$txt))
+  
+  comb.res=list(txt=res.txt, #Multiple output with relevant info
                 tbl=res.est$tbl, #Only need one of them or it double lists
-                method=c(res.out$method,res.est$method), #res would double print that Shapiro Wilks was used
-                ref=unique(c(res$ref,res.out$ref,res.est$ref)))
-
+                method=c(res$method,res.est$method), #res would double print that Shapiro Wilks was used
+                ref=unique(c(res$ref,res.est$ref)))
+  
   return(comb.res)
 
 }
@@ -459,7 +459,17 @@ describe.numeric=function(x,            # variable to describe
                       "mean","stdev","median",
                       "lower.quartile","upper.quartile",
                       "minimum","maximum","normality.pvalue")
-
+  
+  #########################################
+  # Reformat x into a data set
+  xlbl=nmx
+  temp.dset=as.data.frame(x=x)
+  colnames(temp.dset)=x.name
+  
+  ######################################
+  # Outliers
+  res.out = outliers(x.name,temp.dset,x.name,fig=0, txt, clr)
+  
   ######################################
   # tables
   res.tbl=NULL
@@ -473,7 +483,8 @@ describe.numeric=function(x,            # variable to describe
 
   if (fig>0) box.plot(x.name,temp.dset,x.name,clr)
   if (fig>1) bar.plot(x.name,temp.dset,x.name,clr=clr)
-  if (fig>2) nqq.plot(x.name,temp.dset,x.name,clr=clr)
+  if (fig>2) outliers(x.name,temp.dset,x.name,txt=0,clr=clr,fig=1)
+  if (fig>3) nqq.plot(x.name,temp.dset,x.name,clr=clr)
 
   ##############################################
   # narrative text
@@ -492,26 +503,31 @@ describe.numeric=function(x,            # variable to describe
                    ", upper quartile ",round(smry.stats["upper.quartile"],dgts),
                    ", minimum ",round(smry.stats["minimum"],dgts),
                    ", and maximum ",round(smry.stats["maximum"],dgts),".  ")
+    res.txt=c(res.txt,res.out$txt)
   }
 
   if (txt>1)
   {
-    more.txt=paste0("The distribution of ",nmx,
-                    c(" differs "," does not differ ")[1+(smry.stats["normality.pvalue"]>0.05)],
-                    "significantly from a normal distribution at the 0.05 level (p = ",smry.stats["normality.pvalue"],").  ")
+    more.txt=paste0("There is ",
+                    c("","not ")[1+(smry.stats["normality.pvalue"]>0.05)],
+                    "statistically compelling evidence that ",
+                    nmx," is not normally distributed (p = ",smry.stats["normality.pvalue"],").")
     res.txt=c(res.txt,more.txt)
   }
 
   if (txt>0) res.txt=paste0(res.txt,collapse="")
 
   method=paste0("The ",nml.test$method ," was used to evaluate the normality of the distribution of ",nmx,".  ")
-
-  ref=NULL
+  
+  ref=res.out$ref
   if (grepl("Shapiro",nml.test$method))
-    ref='Shapiro, S. S.; Wilk, M. B. (1965). "An analysis of variance test for normality (complete samples)". Biometrika. 52 (3-4): 591-611. doi:10.1093/biomet/52.3-4.591. JSTOR 2333709. MR 0205384.'
-
+    ref=c(ref,
+        'Shapiro, S. S.; Wilk, M. B. (1965). "An analysis of variance test for normality (complete samples)". Biometrika. 52 (3-4): 591-611. doi:10.1093/biomet/52.3-4.591. JSTOR 2333709. MR 0205384.')
+  
   if (grepl("Smirnov",nml.test$method))
-    ref="George Marsaglia, Wai Wan Tsang and Jingbo Wang (2003). Evaluating Kolmogorov's distribution. Journal of Statistical Software, 8/18. doi:10.18637/jss.v008.i18."
+    ref=c(ref,"George Marsaglia, Wai Wan Tsang and Jingbo Wang (2003). Evaluating Kolmogorov's distribution. Journal of Statistical Software, 8/18. doi:10.18637/jss.v008.i18.")
+  
+  
 
 
 
