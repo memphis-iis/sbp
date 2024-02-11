@@ -19,7 +19,7 @@
 #' @param txt A flag that indicates to display text. Default value is 1.
 #' @param clr The color in the plot(s). Default value is NULL.
 #' @param y.name name of x in quotation marks for narrative. #ask_Stan
-#' @param use.all indicates whether to include all data regardless of missingness. Default value is True. #ask_Stan
+#' @param use.all indicates whether to include all the parameters. Default value is True.
 #'
 #' @return returns statistical description of the variable in terms of tables, figures and narratives.
 #' @export
@@ -73,17 +73,17 @@ describe=function(clm.name,    # name of column in quotation marks
 
   if (is.null(res))
     stop("Invalid input class.")
-  
+
   res.est = estimate(clm.name, data, null=NULL, tbl, fig, txt, clr, y.name,use.all)
 
   res.txt=unique(c(res$txt,
                  res.est$txt))
-  
+
   comb.res=list(txt=res.txt, #Multiple output with relevant info
                 tbl=res.est$tbl, #Only need one of them or it double lists
                 method=c(res$method,res.est$method), #res would double print that Shapiro Wilks was used
                 ref=unique(c(res$ref,res.est$ref)))
-  
+
   return(comb.res)
 
 }
@@ -284,7 +284,7 @@ describe.event.timing=function(x,
 #' @param txt display narrative output. The values are 0=none, 1=basic, 2=detailed.
 #' @param clr colors to use in displaying the figures.
 #' @param x.name name of x variable to use in narrative output
-#' @param use.all indicates whether to include all data regardless of missingness. Default value is True.
+#' @param use.all indicates whether to include all the parameters. Default value is True.
 #'
 #' @return returns description of the categorical variable with tables, figures, and a narrative.
 #' @export
@@ -459,17 +459,17 @@ describe.numeric=function(x,            # variable to describe
                       "mean","stdev","median",
                       "lower.quartile","upper.quartile",
                       "minimum","maximum","normality.pvalue")
-  
+
   #########################################
   # Reformat x into a data set
   xlbl=nmx
   temp.dset=as.data.frame(x=x)
   colnames(temp.dset)=x.name
-  
+
   ######################################
   # Outliers
   res.out = outliers(x.name,temp.dset,x.name,fig=0, txt, clr)
-  
+
   ######################################
   # tables
   res.tbl=NULL
@@ -518,16 +518,16 @@ describe.numeric=function(x,            # variable to describe
   if (txt>0) res.txt=paste0(res.txt,collapse="")
 
   method=paste0("The ",nml.test$method ," was used to evaluate the normality of the distribution of ",nmx,".  ")
-  
+
   ref=res.out$ref
   if (grepl("Shapiro",nml.test$method))
     ref=c(ref,
         'Shapiro, S. S.; Wilk, M. B. (1965). "An analysis of variance test for normality (complete samples)". Biometrika. 52 (3-4): 591-611. doi:10.1093/biomet/52.3-4.591. JSTOR 2333709. MR 0205384.')
-  
+
   if (grepl("Smirnov",nml.test$method))
     ref=c(ref,"George Marsaglia, Wai Wan Tsang and Jingbo Wang (2003). Evaluating Kolmogorov's distribution. Journal of Statistical Software, 8/18. doi:10.18637/jss.v008.i18.")
-  
-  
+
+
 
 
 

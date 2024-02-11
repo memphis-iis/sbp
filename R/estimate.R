@@ -24,6 +24,7 @@
 #' @param txt A flag indicating whether to display text. Default is 1.
 #' @param clr The color of the text. Default is NULL.
 #' @param x.name The name of the column. Default is NULL.
+#' @param use.all indicates whether to include all the parameters. Default value is True.
 #'
 #' @return The estimated population value.
 #'
@@ -44,7 +45,7 @@ estimate=function(clm.name,
                   clr=NULL,
                   x.name=NULL,
                   use.all=T)
-  
+
 {
   data=data.frame(data)
   x=get.y.clm(clm.name,data)
@@ -69,6 +70,7 @@ estimate=function(clm.name,
 #' @param clr The color(s) to use.
 #' @param x.name The name of the x variable to use in narrative output. Default
 #'  is NULL.
+#' @param use.all indicates whether to include all the parameters. Default value is True.
 #'
 #' @return The estimated population value.
 #'
@@ -88,7 +90,7 @@ estimate.pop.value=function(x,           # categorical variable to describe
                             clr=NULL,    # color(s) to use
                             x.name=NULL, # name of x variable to use in narrative output
                             use.all=T)
-  
+
 {
   if(is.null(x.name))
   {
@@ -180,6 +182,7 @@ estimate.events=function(x,           # categorical variable to describe
 #' @param clr The color(s) to use.
 #' @param x.name The name of the x variable to use in narrative output. Default
 #' is NULL.
+#' @param use.all indicates whether to include all the parameters. Default value is True.
 #'
 #' @return The estimated proportion(s) of the population belonging to a
 #' category or categories.
@@ -207,10 +210,10 @@ estimate.proportion=function(x,           # categorical variable to describe
     x.name=get.arg(cll,"x")
   }
   nmx=x.name
-  
+
   desc.res=describe.categorical(x,tbl=1,x.name=nmx,clr=clr,fig=fig,txt=txt,
                                 use.all=use.all)
-  
+
   n=sum(desc.res$tbl$n)
   k=nrow(desc.res$tbl)
   ci.tbl=matrix(NA,k,2)
