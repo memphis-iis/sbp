@@ -19,7 +19,7 @@
 #' @param txt A flag that indicates to display text. Default value is 1.
 #' @param clr The color in the plot(s). Default value is NULL.
 #' @param y.name name of x in quotation marks for narrative. #ask_Stan
-#' @param use.all indicates whether to include all data regardless of missingness. Default value is True. #ask_Stan
+#' @param use.all indicates whether to include all the parameters. Default value is True.
 #'
 #' @return returns statistical description of the variable in terms of tables, figures and narratives.
 #' @export

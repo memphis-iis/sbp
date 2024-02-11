@@ -24,7 +24,7 @@
 #' @param txt A flag indicating whether to display text. Default is 1.
 #' @param clr The color of the text. Default is NULL.
 #' @param x.name The name of the column. Default is NULL.
-#' @param use.all The variable to use all the parameters. Default value is set to T (True).
+#' @param use.all indicates whether to include all the parameters. Default value is True.
 #'
 #' @return The estimated population value.
 #'
@@ -70,7 +70,7 @@ estimate=function(clm.name,
 #' @param clr The color(s) to use.
 #' @param x.name The name of the x variable to use in narrative output. Default
 #'  is NULL.
-#' @param use.all The variable to use all the parameters. Default value is set to T (True).
+#' @param use.all indicates whether to include all the parameters. Default value is True.
 #'
 #' @return The estimated population value.
 #'
@@ -182,7 +182,7 @@ estimate.events=function(x,           # categorical variable to describe
 #' @param clr The color(s) to use.
 #' @param x.name The name of the x variable to use in narrative output. Default
 #' is NULL.
-#' @param use.all The variable to use all the parameters. Default value is set to T (True).
+#' @param use.all indicates whether to include all the parameters. Default value is True.
 #'
 #' @return The estimated proportion(s) of the population belonging to a
 #' category or categories.
