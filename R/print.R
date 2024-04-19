@@ -1,25 +1,62 @@
 #'
 #' Print a function's result in a narrative
 #'
-#' The function `show.SBP.result()` prints the result of a function in a properly narrated format.
+#' The function `print.SBP.result()` prints the result of a function in a properly narrated format.
 #'
-#' @param sbp.result The variable that stores the calculation results.
-#' @param knt A flag that identifies if knitr is available. Default value is set to TRUE. #ask_Stan
-#' @param tbl A flag to show tables in the result. Default value is set to TRUE.
-#' @param txt A flag to show texts in the result. Default value is set to TRUE.
-#' @param method #ask_Stan
-#' @param ref A flag to show references in the result. Default value is set to TRUE.
+#' @param x The variable that stores the calculation results.
+# #TODO: not sure how to document ellipsis arguments; currently using examples to do this in part
+# @param knt A flag that identifies if knitr is available. Default value is set to TRUE. #ask_Stan
+# @param tbl A flag to show tables in the result. Default value is set to TRUE.
+# @param txt A flag to show texts in the result. Default value is set to TRUE.
+# @param method #ask_Stan
+# @param ref A flag to show references in the result. Default value is set to TRUE.
 #' @param ... other parameters passed to SBP print method.
 #'
 #' @return shows a functions results containing tables, results, methods and references.
 #' @export
 #'
 #' @examples
-#' #ask_Stan
+#' library("penalized")
+#' data(nki70)
+#' grade=describe("Grade",nki70)
+#' # knt A flag that identifies if knitr is available. Default value is set to TRUE.
+#' # tbl A flag to show tables in the result. Default value is set to TRUE.
+#' # txt A flag to show texts in the result. Default value is set to TRUE.
+#' # method A flag to show the method. Default value set to TRUE
+#' # ref A flag to show references in the result. Default value is set to TRUE.
+#' print(grade,knt=TRUE,tbl=TRUE,txt=TRUE,method=FALSE,ref=FALSE)
 #'
-show.SBP.result=function(sbp.result,knt=T,tbl=T,txt=T,method=T,ref=T, ...)
-
+print.SBP.result=function(x, ...)
 {
+  # remap x
+  sbp.result = x
+
+  # return all outputs by default
+  knt = TRUE
+  tbl=TRUE
+  txt=TRUE
+  method=TRUE
+  ref=TRUE
+
+  # unpack passed arguments from ...
+  arguments <- list(...)
+  argument_names <- names(arguments)
+  if( "knt" %in% argument_names ){
+    knt <- arguments$knt
+  }
+  if( "tbl" %in% argument_names ){
+    tbl <- arguments$knt
+  }
+  if( "txt" %in% argument_names ){
+    txt <- arguments$knt
+  }
+  if( "method" %in% argument_names ){
+    method <- arguments$knt
+  }
+  if( "ref" %in% argument_names ){
+    ref <- arguments$knt
+  }
+
   if ((!is.null(sbp.result$tbl))&&(tbl))
   {
     write(" **TABLES** \n ",file="")
@@ -140,25 +177,25 @@ SBP.example.Rmd.slides=function(SBP.code.string,slide.title)
   write("``` \n",file="")
 
   write("```{r,eval=T,echo=F}",file="")
-  write(paste0("show.SBP.result(",res.name,",method=F,ref=F)"),file="")
+  write(paste0("print.SBP.result(",res.name,",method=F,ref=F)"),file="")
   write("``` \n",file="")
 
   write(paste0("## ",slide.title,"\n "),file="")
 
   write("```{r,eval=T,echo=F}",file="")
-  write(paste0("show.SBP.result(",res.name,",txt=F,tbl=F)"),file="")
+  write(paste0("print.SBP.result(",res.name,",txt=F,tbl=F)"),file="")
   write("``` \n",file="")
 
   write(paste0("## ",slide.title,"\n "),file="")
 
   write("```{r,eval=T,echo=F,results='asis'}",file="")
-  write(paste0("show.SBP.result(",res.name,",method=F,ref=F)"),file="")
+  write(paste0("print.SBP.result(",res.name,",method=F,ref=F)"),file="")
   write("``` \n",file="")
 
   write(paste0("## ",slide.title,"\n "),file="")
 
   write("```{r,eval=T,echo=F,results='asis'}",file="")
-  write(paste0("show.SBP.result(",res.name,",txt=F,tbl=F)"),file="")
+  write(paste0("print.SBP.result(",res.name,",txt=F,tbl=F)"),file="")
   write("``` \n",file="")
 
 }
