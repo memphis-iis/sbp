@@ -3,6 +3,9 @@ Title: Simple Biostats Program
 Version: 0.0.0.9000
 Authors@R: 
     person("Stan", "Pounds", , "stanley.pounds@stjude.org", role = c("aut", "cre"))
+    person("Hasan", "Mashrique", ,"hmshrque@memphis.edu", role=c("ctb")
+    person("Clifford", "Crafford", ,"ccrfford@memphis.edu", role=c("ctb")
+    person("Andrew", "Olney", , "aolney@memphis.edu", role=c("ctb")
 Description: Provides high level wrapper functions for basic statistics tasks.
 License: Apache License (>= 2)
 Encoding: UTF-8
